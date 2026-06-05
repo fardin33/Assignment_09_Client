@@ -1,2 +1,55 @@
 @import "tailwindcss";
 @import "@heroui/styles"; 
+
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.container-custom {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.primary-btn {
+  background-color: #059669;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  transition: background-color 0.2s ease;
+}
+
+.primary-btn:hover {
+  background-color: #047857;
+}
+
+.outline-btn {
+  border: 1px solid #059669;
+  color: #047857;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  transition: background-color 0.2s ease;
+}
+
+.outline-btn:hover {
+  background-color: #ecfdf5;
+}
