@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
-const RegisterPage = () => {
+export default function RegisterPage() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +16,6 @@ const RegisterPage = () => {
 
   const [imageType, setImageType] = useState("url");
   const [imageUrl, setImageUrl] = useState("");
-  const [imageFileBase64, setImageFileBase64] = useState("");
   const [fileName, setFileName] = useState("");
 
   const [loading, setLoading] = useState(false);
@@ -32,19 +31,24 @@ const RegisterPage = () => {
   const isFormValid =
     hasMinLength && hasUppercase && hasNumber && hasSpecialChar && isMatched;
 
+  // Converts file to Base64 to safely pass as an image string to Better Auth
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setFileName(file.name);
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImageFileBase64(reader.result); //
+        setImageUrl(reader.result);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // Better Auth Email/Password SignUp
+  // Dynamic Browser Tab Title Management
+  useEffect(() => {
+    document.title = "StudyNook – register";
+  }, []);
+
   const handleRegister = async (e) => {
     e.preventDefault();
     if (!isFormValid) return;
@@ -52,15 +56,14 @@ const RegisterPage = () => {
     setLoading(true);
     setError("");
 
-    const finalImage = imageType === "url" ? imageUrl : imageFileBase64;
+    const finalImage = imageUrl.trim() !== "" ? imageUrl.trim() : undefined;
 
     try {
       const { data, error: authError } = await authClient.signUp.email({
-        email,
+        email: email.trim().toLowerCase(),
         password,
-        name,
-        image: finalImage || undefined,
-        callbackURL: "/Home",
+        name: name.trim(),
+        image: finalImage,
       });
 
       if (authError) {
@@ -76,7 +79,6 @@ const RegisterPage = () => {
     }
   };
 
-  // Better Auth Google Sign-up
   const handleGoogleSignUp = async () => {
     setGoogleLoading(true);
     setError("");
@@ -100,16 +102,11 @@ const RegisterPage = () => {
   );
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-4 py-1 text-[#1f1b14] dark:bg-[#07111f] sm:px-6 lg:px-8">
-      {/* Background Orbs */}
-      <div className="pointer-events-none absolute -left-28 -top-28 h-72 w-72 rounded-full bg-[#006B4F]/20 blur-3xl sm:h-96 sm:w-96" />
-      <div className="pointer-events-none absolute -right-28 top-1/4 h-72 w-72 rounded-full bg-[#1e3a8a]/20 blur-3xl sm:h-96 sm:w-96" />
-      <div className="pointer-events-none absolute -bottom-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-[#00D19A]/10 blur-3xl sm:h-130 sm:w-130" />
-
-      <section className="relative mx-auto flex min-h-[calc(100vh-64px)] w-full max-w-6xl items-center justify-center">
-        <div className="grid w-full overflow-hidden rounded-[2rem] border border-[#006B4F]/15 bg-white/45 shadow-2xl backdrop-blur-2xl dark:border-[#F6F0E4]/10 dark:bg-[#0f234f]/35 lg:grid-cols-[0.95fr_1.05fr]">
-          {/* Left Form Side */}
-          <div className="flex min-h-160 items-center justify-center px-5 py-8 sm:px-8 lg:px-12">
+    <main className="relative min-h-screen w-full px-4 text-[#1f1b14] dark:bg-[#07111f] sm:px-6 lg:px-8 flex items-center justify-center py-20">
+      <section className="relative w-full max-w-5xl flex items-center justify-center">
+        <div className="grid w-full overflow-hidden rounded-[2rem] border border-[#006B4F]/15 shadow-2xl backdrop-blur-2xl dark:border-[#F6F0E4]/10 lg:grid-cols-[0.95fr_1.05fr]">
+          {/* Left Form Side (80% Transparent White / Dark Blue) */}
+          <div className="flex min-h-160 items-center justify-center bg-white/80 dark:bg-[#0f234f]/80 px-5 py-8 sm:px-8 lg:px-12">
             <div className="w-full max-w-md">
               <div className="mb-8 text-center lg:hidden">
                 <Link
@@ -186,11 +183,14 @@ const RegisterPage = () => {
                       </span>
                     </label>
 
-                    {/* Toggle Switch Design */}
                     <div className="flex rounded-xl bg-[#006B4F]/5 p-1 backdrop-blur-md dark:bg-[#F6F0E4]/5">
                       <button
                         type="button"
-                        onClick={() => setImageType("url")}
+                        onClick={() => {
+                          setImageType("url");
+                          setImageUrl("");
+                          setFileName("");
+                        }}
                         className={`rounded-lg px-3 py-1 text-xs font-bold transition-all duration-300 ${
                           imageType === "url"
                             ? "bg-[#006B4F] text-white shadow-md dark:bg-[#00D19A] dark:text-[#07111f]"
@@ -200,7 +200,10 @@ const RegisterPage = () => {
                       </button>
                       <button
                         type="button"
-                        onClick={() => setImageType("file")}
+                        onClick={() => {
+                          setImageType("file");
+                          setImageUrl("");
+                        }}
                         className={`rounded-lg px-3 py-1 text-xs font-bold transition-all duration-300 ${
                           imageType === "file"
                             ? "bg-[#006B4F] text-white shadow-md dark:bg-[#00D19A] dark:text-[#07111f]"
@@ -407,7 +410,7 @@ const RegisterPage = () => {
                 disabled={loading || googleLoading}
                 onClick={handleGoogleSignUp}
                 className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[#006B4F]/20 bg-white/65 px-5 py-4 text-sm font-black text-[#1f1b14] backdrop-blur-md transition duration-300 disabled:pointer-events-none disabled:opacity-50 hover:-translate-y-0.5 hover:border-[#006B4F]/40 hover:bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:hover:bg-[#07111f]/70">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-sm font-sans text-xs">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-sm font-sans text-xs font-bold text-[#1f1b14]">
                   G
                 </span>
                 {googleLoading ? "Connecting..." : "Continue with Google"}
@@ -473,6 +476,4 @@ const RegisterPage = () => {
       </section>
     </main>
   );
-};
-
-export default RegisterPage;
+}

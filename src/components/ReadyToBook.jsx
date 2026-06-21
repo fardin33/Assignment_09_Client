@@ -24,15 +24,13 @@ const ReadyToBook = () => {
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/rooms"
-                className="w-full sm:w-auto rounded-full bg-[#006B4F] px-8 py-3.5 text-sm font-bold text-white transition duration-300 hover:bg-black"
-              >
+                className="w-full sm:w-auto rounded-full bg-[#006B4F] px-8 py-3.5 text-sm font-bold text-white transition duration-300 hover:bg-black">
                 Browse Rooms Now →
               </Link>
 
               <Link
                 href="/register"
-                className="w-full sm:w-auto rounded-full border border-[#006B4F] px-8 py-3.5 text-sm font-bold text-[#006B4F] transition duration-300 hover:bg-[#006B4F] hover:text-white dark:border-[#F6F0E4]/40 dark:text-[#F6F0E4]"
-              >
+                className="w-full sm:w-auto rounded-full border border-[#006B4F] px-8 py-3.5 text-sm font-bold text-[#006B4F] transition duration-300 hover:bg-[#006B4F] hover:text-white dark:border-[#F6F0E4]/40 dark:text-[#F6F0E4]">
                 Create Free Account
               </Link>
             </div>
