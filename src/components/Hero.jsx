@@ -11,7 +11,7 @@ const Hero = () => {
   };
 
   return (
-    <section className=" dark:bg-[#1e3a8a] py-16 md:py-24 overflow-hidden">
+    <section className=" py-16 md:py-24 overflow-hidden">
       <div className="w-11/13 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left Content */}
         <div className="text-center lg:text-left">

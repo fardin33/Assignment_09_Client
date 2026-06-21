@@ -1,9 +1,40 @@
 @import "tailwindcss";
-@import "@heroui/styles"; 
+@import "@heroui/styles";
 
+:root {
+  --page-bg-light: #ecf0f1;
+  --page-bg-dark: #34495e;
+  --text-light: #0f172a;
+  --text-dark: #f8fafc;
+  --accent-green: #006b4f;
+  --accent-green-strong: #004f3b;
+}
+
+html {
+  min-height: 100%;
+}
 
 body {
+  min-height: 100vh;
   font-family: Inter, system-ui, sans-serif;
+  color: var(--text-light);
+  background: linear-gradient(
+    135deg,
+    var(--page-bg-light) 0%,
+    var(--page-bg-light) 94%,
+    rgba(52, 73, 94, 0.08) 100%
+  );
+  background-attachment: fixed;
+}
+
+.dark body {
+  color: var(--text-dark);
+  background: linear-gradient(
+    135deg,
+    var(--page-bg-dark) 0%,
+    var(--page-bg-dark) 94%,
+    rgba(236, 240, 241, 0.08) 100%
+  );
 }
 
 .container-custom {
@@ -29,7 +60,7 @@ body {
 }
 
 .primary-btn {
-  background-color: #059669;
+  background-color: var(--accent-green);
   color: #ffffff;
   font-weight: 600;
   border-radius: 0.75rem;
@@ -38,12 +69,13 @@ body {
 }
 
 .primary-btn:hover {
-  background-color: #047857;
+  background-color: var(--accent-green-strong);
 }
 
 .outline-btn {
-  border: 1px solid #059669;
-  color: #047857;
+  border: 1px solid var(--accent-green);
+  color: var(--accent-green);
+  background-color: #ffffff;
   font-weight: 600;
   border-radius: 0.75rem;
   padding: 0.625rem 1.25rem;
@@ -52,4 +84,9 @@ body {
 
 .outline-btn:hover {
   background-color: #ecfdf5;
+}
+
+.highlight-green {
+  color: var(--accent-green);
+  font-weight: 700;
 }

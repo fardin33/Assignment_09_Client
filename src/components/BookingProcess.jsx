@@ -3,7 +3,12 @@ const steps = [
     id: 1,
     title: "Search Room",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8" stroke="currentColor" strokeWidth="2">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        className="h-8 w-8"
+        stroke="currentColor"
+        strokeWidth="2">
         <circle cx="11" cy="11" r="7" />
         <path strokeLinecap="round" d="M20 20l-3.5-3.5" />
       </svg>
@@ -14,7 +19,12 @@ const steps = [
     id: 2,
     title: "Choose Time Slot",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8" stroke="currentColor" strokeWidth="2">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        className="h-8 w-8"
+        stroke="currentColor"
+        strokeWidth="2">
         <circle cx="12" cy="12" r="9" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 2" />
       </svg>
@@ -25,9 +35,18 @@ const steps = [
     id: 3,
     title: "Confirm Booking",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8" stroke="currentColor" strokeWidth="2">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        className="h-8 w-8"
+        stroke="currentColor"
+        strokeWidth="2">
         <circle cx="12" cy="12" r="9" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12.5l2.5 2.5L16 9" />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M8 12.5l2.5 2.5L16 9"
+        />
       </svg>
     ),
     desc: "Review your booking summary, confirm the details, and secure your room instantly.",
@@ -36,7 +55,7 @@ const steps = [
 
 const BookingProcess = () => {
   return (
-    <section className="dark:bg-[#3962d5] py-10 md:py-15 lg:py-25">
+    <section className=" py-10 md:py-15 lg:py-25">
       <div className="w-[84.615%] mx-auto">
         <div className="text-center max-w-2xl mx-auto">
           <span className="inline-flex rounded-full border border-[#006B4F]/25 bg-[#006B4F]/10 px-4 py-2 text-xs font-bold text-[#006B4F] dark:border-[#F6F0E4]/25 dark:bg-[#F6F0E4]/10 dark:text-[#F6F0E4]">
@@ -44,11 +63,9 @@ const BookingProcess = () => {
           </span>
 
           <h2 className="mt-3.5 text-3xl md:text-5xl font-extrabold text-[#1f1b14] dark:text-[#F6F0E4]">
-         Smart Booking{" "}
-       <span className="text-[#006B4F] dark:text-[#7bc47f]">
-        Process
-  </span>
-</h2>
+            Smart Booking{" "}
+            <span className="text-[#006B4F] dark:text-[#7bc47f]">Process</span>
+          </h2>
 
           <p className="mt-4 text-[#5f5a50] dark:text-[#F6F0E4]/75">
             From discovery to confirmation in 3 simple steps.

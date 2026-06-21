@@ -90,7 +90,7 @@ const RoomsPage = () => {
   };
 
   return (
-    <main className="min-h-screen dark:bg-[#07111f]">
+    <main className="min-h-screen">
       <section className="py-6 sm:py-8 md:py-10 lg:py-10">
         <div className="mx-auto w-[92%] max-w-375">
           {/* Top Header */}
@@ -127,8 +127,7 @@ const RoomsPage = () => {
               <div>
                 <label
                   htmlFor="roomSearch"
-                  className="mb-2 block text-xs font-semibold text-[#5f5a50] dark:text-[#F6F0E4]/70"
-                >
+                  className="mb-2 block text-xs font-semibold text-[#5f5a50] dark:text-[#F6F0E4]/70">
                   Search rooms
                 </label>
 
@@ -153,8 +152,7 @@ const RoomsPage = () => {
                 <div className="mb-2 flex items-center justify-between gap-2">
                   <label
                     htmlFor="maxPrice"
-                    className="text-xs font-semibold text-[#5f5a50] dark:text-[#F6F0E4]/70"
-                  >
+                    className="text-xs font-semibold text-[#5f5a50] dark:text-[#F6F0E4]/70">
                     Max price
                   </label>
 
@@ -190,16 +188,14 @@ const RoomsPage = () => {
                       : "border-[#006B4F]/20 hover:border-[#006B4F]/40 dark:border-[#F6F0E4]/15 dark:hover:border-[#F6F0E4]/30")
                   }
                   aria-haspopup="listbox"
-                  aria-expanded={isFloorOpen}
-                >
+                  aria-expanded={isFloorOpen}>
                   <span
                     className={
                       "truncate " +
                       (selectedFloor
                         ? "text-[#1f1b14] dark:text-[#F6F0E4]"
                         : "text-[#5f5a50]/75 dark:text-[#F6F0E4]/50")
-                    }
-                  >
+                    }>
                     {selectedFloor || "All floors"}
                   </span>
 
@@ -207,8 +203,7 @@ const RoomsPage = () => {
                     className={
                       "grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#006B4F]/10 text-sm text-[#006B4F] transition duration-300 dark:bg-[#F6F0E4]/10 dark:text-[#F6F0E4] " +
                       (isFloorOpen ? "rotate-180" : "")
-                    }
-                  >
+                    }>
                     ⌄
                   </span>
                 </button>
@@ -217,8 +212,7 @@ const RoomsPage = () => {
                   <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 overflow-hidden rounded-2xl border border-[#006B4F]/15 bg-white/95 p-1.5 shadow-2xl shadow-[#006B4F]/10 backdrop-blur-xl dark:border-[#F6F0E4]/10 dark:bg-[#0b1733]/95">
                     <div
                       role="listbox"
-                      className="max-h-64 overflow-y-auto overscroll-contain pr-1"
-                    >
+                      className="max-h-64 overflow-y-auto overscroll-contain pr-1">
                       <button
                         type="button"
                         onClick={() => handleSelectFloor("")}
@@ -229,8 +223,7 @@ const RoomsPage = () => {
                             : "text-[#1f1b14] hover:bg-[#eef8f5] dark:text-[#F6F0E4] dark:hover:bg-white/10")
                         }
                         role="option"
-                        aria-selected={selectedFloor === ""}
-                      >
+                        aria-selected={selectedFloor === ""}>
                         <span className="truncate">All floors</span>
                         {selectedFloor === "" && (
                           <span className="text-sm">✓</span>
@@ -252,8 +245,7 @@ const RoomsPage = () => {
                                 : "text-[#1f1b14] hover:bg-[#eef8f5] dark:text-[#F6F0E4] dark:hover:bg-white/10")
                             }
                             role="option"
-                            aria-selected={isSelected}
-                          >
+                            aria-selected={isSelected}>
                             <span className="truncate">{floor}</span>
                             {isSelected && <span className="text-sm">✓</span>}
                           </button>
@@ -274,8 +266,7 @@ const RoomsPage = () => {
                   {amenityOptions.map((amenity) => (
                     <label
                       key={amenity}
-                      className="flex cursor-pointer items-center gap-2.5 text-xs font-medium text-[#1f1b14] dark:text-[#F6F0E4]/85"
-                    >
+                      className="flex cursor-pointer items-center gap-2.5 text-xs font-medium text-[#1f1b14] dark:text-[#F6F0E4]/85">
                       <input
                         type="checkbox"
                         checked={selectedAmenities.includes(amenity)}
@@ -292,8 +283,7 @@ const RoomsPage = () => {
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="mt-5 w-full rounded-full border border-[#006B4F]/20 bg-[#006B4F] px-4 py-2 text-xs font-bold text-white transition duration-300 hover:bg-black dark:border-[#F6F0E4]/20 dark:bg-[#F6F0E4] dark:text-[#0f234f] dark:hover:bg-white"
-              >
+                className="mt-5 w-full rounded-full border border-[#006B4F]/20 bg-[#006B4F] px-4 py-2 text-xs font-bold text-white transition duration-300 hover:bg-black dark:border-[#F6F0E4]/20 dark:bg-[#F6F0E4] dark:text-[#0f234f] dark:hover:bg-white">
                 Reset filters
               </button>
             </aside>

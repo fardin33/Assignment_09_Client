@@ -135,8 +135,7 @@ const AddRoomPage = () => {
                   <button
                     key={item}
                     type="button"
-                    className="rounded-2xl border border-[#00775B]/25 bg-white px-4 py-3 text-xs font-semibold text-[#55504a] transition hover:border-[#00775B] hover:bg-[#00775B] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#00775B]/10 sm:text-sm"
-                  >
+                    className="rounded-2xl border border-[#00775B]/25 bg-white px-4 py-3 text-xs font-semibold text-[#55504a] transition hover:border-[#00775B] hover:bg-[#00775B] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#00775B]/10 sm:text-sm">
                     {item}
                   </button>
                 ))}
@@ -147,15 +146,13 @@ const AddRoomPage = () => {
             <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
               <button
                 type="button"
-                className="rounded-2xl border border-[#00775B]/25 bg-white px-5 py-3 text-sm font-bold text-[#00775B] transition hover:bg-[#00775B]/5 sm:text-base"
-              >
+                className="rounded-2xl border border-[#00775B]/25 bg-white px-5 py-3 text-sm font-bold text-[#00775B] transition hover:bg-[#00775B]/5 sm:text-base">
                 Cancel
               </button>
 
               <button
                 type="submit"
-                className="rounded-2xl bg-[#00775B] px-5 py-3 text-sm font-bold text-white shadow-[0_14px_30px_rgba(0,119,91,0.20)] transition hover:bg-[#00634c] active:scale-[0.99] sm:text-base"
-              >
+                className="rounded-2xl bg-[#00775B] px-5 py-3 text-sm font-bold text-white shadow-[0_14px_30px_rgba(0,119,91,0.20)] transition hover:bg-[#00634c] active:scale-[0.99] sm:text-base">
                 Add Room
               </button>
             </div>

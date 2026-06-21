@@ -83,7 +83,7 @@ const rooms = [
 
 const AvailableRooms = () => {
   return (
-    <section className="dark:bg-[#1e3a8a] py-10 md:py-15 lg:py-25">
+    <section className=" py-10 md:py-15 lg:py-25">
       <div className="w-[84.615%] mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="inline-flex rounded-full border border-[#006B4F]/25 bg-[#006B4F]/10 px-4 py-2 text-xs font-bold text-[#006B4F] dark:border-[#F6F0E4]/25 dark:bg-[#F6F0E4]/10 dark:text-[#F6F0E4]">
