@@ -1,4 +1,506 @@
-import React from "react";
+// import React from "react";
+// import {
+//   Image as ImageIcon,
+//   Users,
+//   DollarSign,
+//   Building2,
+//   FileText,
+//   BadgePlus,
+// } from "lucide-react";
+
+// const amenities = [
+//   "Whiteboard",
+//   "Projector",
+//   "Wi-Fi",
+//   "Power Outlets",
+//   "Quiet Zone",
+//   "Air Conditioning",
+// ];
+
+// const AddRoomPage = () => {
+//   return (
+//     <main className="min-h-screen bg-white text-[#1f1f1f]">
+//       {/* Header Section */}
+//       <section className="bg-white">
+//         <div className="mx-auto w-full max-w-6xl px-5 pt-8 pb-10 text-center sm:px-6 md:pt-10 lg:px-8">
+//           <h1 className="text-3xl font-extrabold tracking-tight text-[#00775B] md:text-3xl lg:text-5xl">
+//             Add New Room
+//           </h1>
+
+//           <p className="mx-auto mt-2 max-w-xl text-md leading-6 text-[#55504a] md:text-sm lg:text-xl">
+//             List your study room and help students find the perfect space
+//           </p>
+//         </div>
+//       </section>
+
+//       {/* Form Section */}
+//       <section className="mx-auto flex w-full max-w-6xl justify-center bg-white px-5 py-6 sm:px-6 md:py-8 lg:px-8">
+//         <div className="w-full max-w-4xl rounded-[24px] border border-[#00775B]/20 bg-white/55 p-5 shadow-[0_20px_55px_rgba(0,119,91,0.09)] backdrop-blur-xl sm:p-6 md:p-7">
+//           <form className="space-y-5">
+//             {/* Room Name */}
+//             <div>
+//               <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
+//                 <BadgePlus className="h-4 w-4 text-[#00775B]" />
+//                 Room Name
+//               </label>
+
+//               <input
+//                 type="text"
+//                 placeholder="Silent Focus Pod"
+//                 className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+//               />
+//             </div>
+
+//             {/* Description */}
+//             <div>
+//               <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
+//                 <FileText className="h-4 w-4 text-[#00775B]" />
+//                 Description
+//               </label>
+
+//               <textarea
+//                 rows="4"
+//                 placeholder="A quiet private room ideal for deep reading, exam preparation, and focused study sessions..."
+//                 className="w-full resize-none rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+//               />
+//             </div>
+
+//             {/* Image URL */}
+//             <div>
+//               <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
+//                 <ImageIcon className="h-4 w-4 text-[#00775B]" />
+//                 Image URL
+//               </label>
+
+//               <input
+//                 type="url"
+//                 placeholder="https://example.com/room-image.jpg"
+//                 className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+//               />
+//             </div>
+
+//             {/* Floor and Capacity */}
+//             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+//               <div>
+//                 <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
+//                   <Building2 className="h-4 w-4 text-[#00775B]" />
+//                   Floor
+//                 </label>
+
+//                 <input
+//                   type="text"
+//                   placeholder="Floor 3"
+//                   className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+//                 />
+//               </div>
+
+//               <div>
+//                 <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
+//                   <Users className="h-4 w-4 text-[#00775B]" />
+//                   Capacity
+//                 </label>
+
+//                 <input
+//                   type="text"
+//                   placeholder="2-4 people"
+//                   className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Hourly Rate */}
+//             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+//               <div>
+//                 <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
+//                   <DollarSign className="h-4 w-4 text-[#00775B]" />
+//                   Hourly Rate
+//                 </label>
+
+//                 <input
+//                   type="number"
+//                   placeholder="5"
+//                   className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Amenities */}
+//             <div>
+//               <h3 className="mb-3 text-xs font-extrabold text-[#1f1f1f] sm:text-sm">
+//                 Amenities
+//               </h3>
+
+//               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+//                 {amenities.map((item) => (
+//                   <button
+//                     key={item}
+//                     type="button"
+//                     className="rounded-2xl border border-[#00775B]/25 bg-white px-4 py-3 text-xs font-semibold text-[#55504a] transition hover:border-[#00775B] hover:bg-[#00775B] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#00775B]/10 sm:text-sm">
+//                     {item}
+//                   </button>
+//                 ))}
+//               </div>
+//             </div>
+
+//             {/* Buttons */}
+//             <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
+//               <button
+//                 type="button"
+//                 className="rounded-2xl border border-[#00775B]/25 bg-white px-5 py-3 text-sm font-bold text-[#00775B] transition hover:bg-[#00775B]/5 sm:text-base">
+//                 Cancel
+//               </button>
+
+//               <button
+//                 type="submit"
+//                 className="rounded-2xl bg-[#00775B] px-5 py-3 text-sm font-bold text-white shadow-[0_14px_30px_rgba(0,119,91,0.20)] transition hover:bg-[#00634c] active:scale-[0.99] sm:text-base">
+//                 Add Room
+//               </button>
+//             </div>
+//           </form>
+//         </div>
+//       </section>
+//     </main>
+//   );
+// };
+
+// export default AddRoomPage;
+
+// import React from "react";
+// import {
+//   Image as ImageIcon,
+//   Users,
+//   DollarSign,
+//   Building2,
+//   FileText,
+//   BadgePlus,
+// } from "lucide-react";
+
+// const amenities = [
+//   "Whiteboard",
+//   "Projector",
+//   "Wi-Fi",
+//   "Power Outlets",
+//   "Quiet Zone",
+//   "Air Conditioning",
+// ];
+
+// const AddRoomPage = () => {
+//   return (
+//     <main className="min-h-screen bg-white text-[#1f1f1f] dark:bg-[#07111f] dark:text-[#F6F0E4] transition-colors duration-300">
+//       {/* Header Section */}
+//       <section className="bg-transparent">
+//         <div className="mx-auto w-full max-w-6xl px-5 pt-8 pb-10 text-center sm:px-6 md:pt-10 lg:px-8">
+//           <h1 className="text-3xl font-extrabold tracking-tight text-[#00775B] dark:text-[#0e9b75] md:text-3xl lg:text-5xl">
+//             Add New Room
+//           </h1>
+
+//           <p className="mx-auto mt-2 max-w-xl text-md leading-6 text-[#55504a] dark:text-[#F6F0E4]/75 md:text-sm lg:text-xl">
+//             List your study room and help students find the perfect space
+//           </p>
+//         </div>
+//       </section>
+
+//       {/* Form Section */}
+//       <section className="mx-auto flex w-full max-w-6xl justify-center bg-transparent px-5 py-6 sm:px-6 md:py-8 lg:px-8">
+//         <div className="w-full max-w-4xl rounded-[24px] border border-[#00775B]/20 bg-white/55 dark:border-[#F6F0E4]/10 dark:bg-[#0b1733]/50 p-5 shadow-[0_20px_55px_rgba(0,119,91,0.05)] dark:shadow-none backdrop-blur-xl sm:p-6 md:p-7">
+//           <form className="space-y-5">
+//             {/* Room Name */}
+//             <div>
+//               <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                 <BadgePlus className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                 Room Name
+//               </label>
+
+//               <input
+//                 type="text"
+//                 placeholder="Silent Focus Pod"
+//                 className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//               />
+//             </div>
+
+//             {/* Description */}
+//             <div>
+//               <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                 <FileText className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                 Description
+//               </label>
+
+//               <textarea
+//                 rows="4"
+//                 placeholder="A quiet private room ideal for deep reading, exam preparation, and focused study sessions..."
+//                 className="w-full resize-none rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//               />
+//             </div>
+
+//             {/* Image URL */}
+//             <div>
+//               <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                 <ImageIcon className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                 Image URL
+//               </label>
+
+//               <input
+//                 type="url"
+//                 placeholder="https://example.com/room-image.jpg"
+//                 className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//               />
+//             </div>
+
+//             {/* Floor and Capacity */}
+//             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+//               <div>
+//                 <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                   <Building2 className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                   Floor
+//                 </label>
+
+//                 <input
+//                   type="text"
+//                   placeholder="Floor 3"
+//                   className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//                 />
+//               </div>
+
+//               <div>
+//                 <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                   <Users className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                   Capacity
+//                 </label>
+
+//                 <input
+//                   type="text"
+//                   placeholder="2-4 people"
+//                   className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Hourly Rate */}
+//             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+//               <div>
+//                 <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                   <DollarSign className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                   Hourly Rate
+//                 </label>
+
+//                 <input
+//                   type="number"
+//                   placeholder="5"
+//                   className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Amenities */}
+//             <div>
+//               <h3 className="mb-3 text-xs font-extrabold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                 Amenities
+//               </h3>
+
+//               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+//                 {amenities.map((item) => (
+//                   <button
+//                     key={item}
+//                     type="button"
+//                     className="rounded-2xl border border-[#00775B]/25 dark:border-[#F6F0E4]/15 bg-white dark:bg-[#07111f]/40 px-4 py-3 text-xs font-semibold text-[#55504a] dark:text-[#F6F0E4]/80 transition hover:border-[#00775B] dark:hover:border-[#0e9b75] hover:bg-[#00775B] dark:hover:bg-[#0e9b75] hover:text-white dark:hover:text-[#07111f] focus:outline-none focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-sm">
+//                     {item}
+//                   </button>
+//                 ))}
+//               </div>
+//             </div>
+
+//             {/* Buttons */}
+//             <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
+//               <button
+//                 type="button"
+//                 className="rounded-2xl border border-[#00775B]/25 dark:border-[#F6F0E4]/15 bg-white dark:bg-transparent px-5 py-3 text-sm font-bold text-[#00775B] dark:text-[#0e9b75] transition hover:bg-[#00775B]/5 dark:hover:bg-white/5 sm:text-base">
+//                 Cancel
+//               </button>
+
+//               <button
+//                 type="submit"
+//                 className="rounded-2xl bg-[#00775B] dark:bg-[#0e9b75] px-5 py-3 text-sm font-bold text-white dark:text-[#07111f] shadow-[0_14px_30px_rgba(0,119,91,0.15)] dark:shadow-none transition hover:bg-[#00634c] dark:hover:bg-[#11cda0] active:scale-[0.99] sm:text-base">
+//                 Add Room
+//               </button>
+//             </div>
+//           </form>
+//         </div>
+//       </section>
+//     </main>
+//   );
+// };
+
+// export default AddRoomPage;
+
+// import React from "react";
+// import {
+//   Image as ImageIcon,
+//   Users,
+//   DollarSign,
+//   Building2,
+//   FileText,
+//   BadgePlus,
+// } from "lucide-react";
+
+// const amenities = [
+//   "Whiteboard",
+//   "Projector",
+//   "Wi-Fi",
+//   "Power Outlets",
+//   "Quiet Zone",
+//   "Air Conditioning",
+// ];
+
+// const AddRoomPage = () => {
+//   return (
+//     <main className="min-h-screen  text-[#1f1f1f] dark:bg-[#07111f] dark:text-[#F6F0E4] transition-colors duration-300">
+//       {/* Header Section */}
+//       <section className="bg-transparent">
+//         <div className="mx-auto w-full max-w-6xl px-5 pt-8 pb-10 text-center sm:px-6 md:pt-10 lg:px-8">
+//           <h1 className="text-3xl font-extrabold tracking-tight text-[#00775B] dark:text-[#0e9b75] md:text-3xl lg:text-5xl">
+//             Add New Room
+//           </h1>
+
+//           <p className="mx-auto mt-2 max-w-xl text-md leading-6 text-[#55504a] dark:text-[#F6F0E4]/75 md:text-sm lg:text-xl">
+//             List your study room and help students find the perfect space
+//           </p>
+//         </div>
+//       </section>
+
+//       <section className="mx-auto flex w-full max-w-6xl justify-center bg-transparent px-5 pt-6 pb-16 sm:px-6 md:pt-8 md:pb-24 lg:px-8 lg:pb-32">
+//         <div className="w-full max-w-4xl rounded-[24px] border border-[#00775B]/20 bg-white/55 dark:border-[#F6F0E4]/10 dark:bg-[#0b1733]/50 p-5 shadow-[0_20px_55px_rgba(0,119,91,0.05)] dark:shadow-none backdrop-blur-xl sm:p-6 md:p-7">
+//           <form className="space-y-5">
+//             {/* Room Name */}
+//             <div>
+//               <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                 <BadgePlus className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                 Room Name
+//               </label>
+
+//               <input
+//                 type="text"
+//                 placeholder="Silent Focus Pod"
+//                 className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//               />
+//             </div>
+
+//             {/* Description */}
+//             <div>
+//               <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                 <FileText className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                 Description
+//               </label>
+
+//               <textarea
+//                 rows="4"
+//                 placeholder="A quiet private room ideal for deep reading, exam preparation, and focused study sessions..."
+//                 className="w-full resize-none rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//               />
+//             </div>
+
+//             {/* Image URL */}
+//             <div>
+//               <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                 <ImageIcon className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                 Image URL
+//               </label>
+
+//               <input
+//                 type="url"
+//                 placeholder="https://example.com/room-image.jpg"
+//                 className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//               />
+//             </div>
+
+//             {/* Floor and Capacity */}
+//             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+//               <div>
+//                 <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                   <Building2 className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                   Floor
+//                 </label>
+
+//                 <input
+//                   type="text"
+//                   placeholder="Floor 3"
+//                   className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//                 />
+//               </div>
+
+//               <div>
+//                 <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                   <Users className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                   Capacity
+//                 </label>
+
+//                 <input
+//                   type="text"
+//                   placeholder="2-4 people"
+//                   className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Hourly Rate */}
+//             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+//               <div>
+//                 <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                   <DollarSign className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
+//                   Hourly Rate
+//                 </label>
+
+//                 <input
+//                   type="number"
+//                   placeholder="5"
+//                   className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#1f1f1f] dark:text-[#F6F0E4] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Amenities */}
+//             <div>
+//               <h3 className="mb-3 text-xs font-extrabold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+//                 Amenities
+//               </h3>
+
+//               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+//                 {amenities.map((item) => (
+//                   <button
+//                     key={item}
+//                     type="button"
+//                     className="rounded-2xl border border-[#00775B]/25 dark:border-[#F6F0E4]/15 bg-white dark:bg-[#07111f]/40 px-4 py-3 text-xs font-semibold text-[#55504a] dark:text-[#F6F0E4]/80 transition hover:border-[#00775B] dark:hover:border-[#0e9b75] hover:bg-[#00775B] dark:hover:bg-[#0e9b75] hover:text-white dark:hover:text-[#07111f] focus:outline-none focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-sm">
+//                     {item}
+//                   </button>
+//                 ))}
+//               </div>
+//             </div>
+
+//             {/* Buttons */}
+//             <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
+//               <button
+//                 type="button"
+//                 className="rounded-2xl border border-[#00775B]/25 dark:border-[#F6F0E4]/15 bg-white dark:bg-transparent px-5 py-3 text-sm font-bold text-[#00775B] dark:text-[#0e9b75] transition hover:bg-[#00775B]/5 dark:hover:bg-white/5 sm:text-base">
+//                 Cancel
+//               </button>
+
+//               <button
+//                 type="submit"
+//                 className="rounded-2xl bg-[#00775B] dark:bg-[#0e9b75] px-5 py-3 text-sm font-bold text-white dark:text-[#07111f] shadow-[0_14px_30px_rgba(0,119,91,0.15)] dark:shadow-none transition hover:bg-[#00634c] dark:hover:bg-[#11cda0] active:scale-[0.99] sm:text-base">
+//                 Add Room
+//               </button>
+//             </div>
+//           </form>
+//         </div>
+//       </section>
+//     </main>
+//   );
+// };
+
+// export default AddRoomPage;
+
+"use client";
+
+import React, { useState } from "react";
 import {
   Image as ImageIcon,
   Users,
@@ -8,7 +510,7 @@ import {
   BadgePlus,
 } from "lucide-react";
 
-const amenities = [
+const amenitiesList = [
   "Whiteboard",
   "Projector",
   "Wi-Fi",
@@ -18,92 +520,108 @@ const amenities = [
 ];
 
 const AddRoomPage = () => {
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
+
+  const handleAmenityClick = (amenity) => {
+    if (selectedAmenities.includes(amenity)) {
+      setSelectedAmenities(
+        selectedAmenities.filter((item) => item !== amenity),
+      );
+    } else {
+      setSelectedAmenities([...selectedAmenities, amenity]);
+    }
+  };
+
   return (
-    <main className="min-h-screen bg-white text-[#1f1f1f]">
+    <main className="min-h-screen bg-white text-[#1f1f1f] dark:bg-[#07111f] dark:text-[#F6F0E4] transition-colors duration-300">
       {/* Header Section */}
-      <section className="bg-white">
+      <section className="bg-transparent">
         <div className="mx-auto w-full max-w-6xl px-5 pt-8 pb-10 text-center sm:px-6 md:pt-10 lg:px-8">
-          <h1 className="text-3xl font-extrabold tracking-tight text-[#00775B] md:text-3xl lg:text-5xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-[#00775B] dark:text-[#0e9b75] md:text-3xl lg:text-5xl">
             Add New Room
           </h1>
 
-          <p className="mx-auto mt-2 max-w-xl text-md leading-6 text-[#55504a] md:text-sm lg:text-xl">
+          <p className="mx-auto mt-2 max-w-xl text-md leading-6 text-[#55504a] dark:text-[#F6F0E4]/75 md:text-sm lg:text-xl">
             List your study room and help students find the perfect space
           </p>
         </div>
       </section>
 
       {/* Form Section */}
-      <section className="mx-auto flex w-full max-w-6xl justify-center bg-white px-5 py-6 sm:px-6 md:py-8 lg:px-8">
-        <div className="w-full max-w-4xl rounded-[24px] border border-[#00775B]/20 bg-white/55 p-5 shadow-[0_20px_55px_rgba(0,119,91,0.09)] backdrop-blur-xl sm:p-6 md:p-7">
+      <section className="mx-auto flex w-full max-w-6xl justify-center bg-transparent px-5 pt-6 pb-16 sm:px-6 md:pt-8 md:pb-24 lg:px-8 lg:pb-32">
+        <div className="w-full max-w-4xl rounded-[24px] border border-[#00775B]/20 bg-white/55 dark:border-[#F6F0E4]/10 dark:bg-[#0b1733]/50 p-5 shadow-[0_20px_55px_rgba(0,119,91,0.05)] dark:shadow-none backdrop-blur-xl sm:p-6 md:p-7">
           <form className="space-y-5">
             {/* Room Name */}
             <div>
-              <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
-                <BadgePlus className="h-4 w-4 text-[#00775B]" />
+              <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+                <BadgePlus className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
                 Room Name
               </label>
 
               <input
                 type="text"
                 placeholder="Silent Focus Pod"
-                className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+                className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#08a37f]  outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base font-semibold"
               />
             </div>
 
             {/* Description */}
             <div>
-              <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
-                <FileText className="h-4 w-4 text-[#00775B]" />
+              <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+                <FileText className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
                 Description
               </label>
 
               <textarea
                 rows="4"
                 placeholder="A quiet private room ideal for deep reading, exam preparation, and focused study sessions..."
-                className="w-full resize-none rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+                className="w-full resize-none rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#08a37f] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
               />
             </div>
 
             {/* Image URL */}
             <div>
-              <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
-                <ImageIcon className="h-4 w-4 text-[#00775B]" />
+              <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+                <ImageIcon className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
                 Image URL
               </label>
 
               <input
                 type="url"
                 placeholder="https://example.com/room-image.jpg"
-                className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+                className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#08a37f] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
               />
             </div>
 
             {/* Floor and Capacity */}
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              {/* Floor */}
               <div>
-                <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
-                  <Building2 className="h-4 w-4 text-[#00775B]" />
+                <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+                  <Building2 className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
                   Floor
                 </label>
 
                 <input
-                  type="text"
-                  placeholder="Floor 3"
-                  className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+                  type="number"
+                  min="0"
+                  placeholder="3"
+                  className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#08a37f] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
                 />
               </div>
 
+              {/* Capacity */}
               <div>
-                <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
-                  <Users className="h-4 w-4 text-[#00775B]" />
+                <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+                  <Users className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
                   Capacity
                 </label>
 
                 <input
-                  type="text"
-                  placeholder="2-4 people"
-                  className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+                  type="number"
+                  min="1"
+                  placeholder="4"
+                  className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#08a37f] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
                 />
               </div>
             </div>
@@ -111,34 +629,43 @@ const AddRoomPage = () => {
             {/* Hourly Rate */}
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
-                <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] sm:text-sm">
-                  <DollarSign className="h-4 w-4 text-[#00775B]" />
+                <label className="mb-2 flex items-center gap-2 text-xs font-bold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
+                  <DollarSign className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
                   Hourly Rate
                 </label>
 
                 <input
                   type="number"
+                  min="0"
                   placeholder="5"
-                  className="w-full rounded-2xl border border-[#00775B]/20 bg-white px-4 py-3 text-sm text-[#1f1f1f] outline-none transition placeholder:text-[#6b7280] focus:border-[#00775B] focus:ring-4 focus:ring-[#00775B]/10 sm:text-base"
+                  className="w-full rounded-2xl border border-[#00775B]/20 bg-white dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/60 px-4 py-3 text-sm text-[#08a37f] outline-none transition placeholder:text-[#6b7280] dark:placeholder:text-[#F6F0E4]/40 focus:border-[#00775B] dark:focus:border-[#0e9b75] focus:ring-4 focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10 sm:text-base"
                 />
               </div>
             </div>
 
             {/* Amenities */}
             <div>
-              <h3 className="mb-3 text-xs font-extrabold text-[#1f1f1f] sm:text-sm">
+              <h3 className="mb-3 text-xs font-extrabold text-[#1f1f1f] dark:text-[#F6F0E4]/90 sm:text-sm">
                 Amenities
               </h3>
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {amenities.map((item) => (
-                  <button
-                    key={item}
-                    type="button"
-                    className="rounded-2xl border border-[#00775B]/25 bg-white px-4 py-3 text-xs font-semibold text-[#55504a] transition hover:border-[#00775B] hover:bg-[#00775B] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#00775B]/10 sm:text-sm">
-                    {item}
-                  </button>
-                ))}
+                {amenitiesList.map((item) => {
+                  const isSelected = selectedAmenities.includes(item);
+                  return (
+                    <button
+                      key={item}
+                      type="button"
+                      onClick={() => handleAmenityClick(item)}
+                      className={`rounded-2xl border px-4 py-3 text-xs font-semibold transition focus:outline-none focus:ring-4 sm:text-sm ${
+                        isSelected
+                          ? "border-[#00775B] bg-[#00775B] text-white dark:border-[#0e9b75] dark:bg-[#0e9b75] dark:text-[#07111f]"
+                          : "border-[#00775B]/25 bg-white text-[#55504a] dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/40 dark:text-[#F6F0E4]/80 hover:border-[#00775B] dark:hover:border-[#0e9b75]"
+                      } focus:ring-[#00775B]/10 dark:focus:ring-[#0e9b75]/10`}>
+                      {item}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -146,13 +673,13 @@ const AddRoomPage = () => {
             <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
               <button
                 type="button"
-                className="rounded-2xl border border-[#00775B]/25 bg-white px-5 py-3 text-sm font-bold text-[#00775B] transition hover:bg-[#00775B]/5 sm:text-base">
+                className="rounded-2xl border border-[#00775B]/25 dark:border-[#F6F0E4]/15 bg-white dark:bg-transparent px-5 py-3 text-sm font-bold text-[#00775B] dark:text-[#0e9b75] transition hover:bg-[#00775B]/5 dark:hover:bg-white/5 sm:text-base">
                 Cancel
               </button>
 
               <button
                 type="submit"
-                className="rounded-2xl bg-[#00775B] px-5 py-3 text-sm font-bold text-white shadow-[0_14px_30px_rgba(0,119,91,0.20)] transition hover:bg-[#00634c] active:scale-[0.99] sm:text-base">
+                className="rounded-2xl bg-[#00775B] dark:bg-[#0e9b75] px-5 py-3 text-sm font-bold text-white dark:text-[#07111f] shadow-[0_14px_30px_rgba(0,119,91,0.15)] dark:shadow-none transition hover:bg-[#00634c] dark:hover:bg-[#11cda0] active:scale-[0.99] sm:text-base">
                 Add Room
               </button>
             </div>
