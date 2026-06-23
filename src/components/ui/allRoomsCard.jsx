@@ -1,14 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Cards = ({ roomsData = [] }) => {
-  const displayedRooms = [...roomsData]
-    .sort((a, b) => (b.bookings || 0) - (a.bookings || 0))
-    .slice(0, 6);
-
+const AllRoomsCards = ({ roomsData = [] }) => {
   return (
     <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8 p-4">
-      {displayedRooms.map((room) => (
+      {roomsData.map((room) => (
         <div
           key={room._id}
           className="group relative flex flex-col overflow-hidden rounded-3xl border-2 border-green bg-white/30 dark:bg-[#0f234f]/50 backdrop-blur-md shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-white/40">
@@ -16,11 +12,10 @@ const Cards = ({ roomsData = [] }) => {
           <div className="relative h-52 overflow-hidden rounded-t-3xl strict">
             <Image
               src={room.image}
-              alt={room.title || "Study Room Image"}
+              alt={room.roomName || "Study Room Image"}
               fill
               className="object-cover transition duration-700 group-hover:scale-105"
             />
-
             <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
 
             {/* Status Badge */}
@@ -77,27 +72,19 @@ const Cards = ({ roomsData = [] }) => {
               </div>
             </div>
 
-            {/* Amenities Section */}
-
             {room.amenities && room.amenities.length > 0 && (
               <div className="mt-5">
                 <span className="block mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                   Amenities
                 </span>
                 <div className="flex flex-wrap items-center gap-1.5">
-                  {room.amenities.slice(0, 3).map((amenity) => (
+                  {room.amenities.map((amenity) => (
                     <span
                       key={amenity}
                       className="rounded-lg bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-100/50 dark:border-emerald-900/30 px-2.5 py-1 text-[11px] font-medium text-emerald-700 dark:text-emerald-400 transition-colors duration-200 hover:bg-emerald-100 dark:hover:bg-emerald-900/40">
                       {amenity}
                     </span>
                   ))}
-
-                  {room.amenities.length > 3 && (
-                    <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 px-1">
-                      +{room.amenities.length - 3} more
-                    </span>
-                  )}
                 </div>
               </div>
             )}
@@ -121,4 +108,4 @@ const Cards = ({ roomsData = [] }) => {
   );
 };
 
-export default Cards;
+export default AllRoomsCards;

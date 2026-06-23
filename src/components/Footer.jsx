@@ -44,12 +44,14 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="mt-12 border-t border-slate-300/50 dark:border-white/10 bg-[#ECF0F1] dark:bg-[#34495E] transition-colors duration-300">
+    <footer className="mt-12 border-t border-slate-300/50 dark:border-white/10 bg-[#ECF0F1] dark:bg-[#07111f]/80 transition-colors duration-300">
       <div className="w-11/12 mx-auto py-10 md:py-12">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-10">
           <div>
             <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#34495E] dark:bg-[#ECF0F1] text-sm font-bold text-white dark:text-[#34495E]">
+              <div
+                className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white dark:bg-[#ECF0F1]"
+                style={{ backgroundColor: "var(--accent-green)" }}>
                 📖
               </div>
 
@@ -157,7 +159,7 @@ const Footer = () => {
                   key={social.label}
                   href="/"
                   aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 dark:border-white/20 bg-white/50 dark:bg-white/10 text-slate-700 dark:text-slate-200 transition duration-300 hover:border-slate-800 hover:bg-slate-800 hover:text-white dark:hover:bg-white dark:hover:text-[#34495E]">
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 dark:border-white/20 bg-white/50 dark:bg-white/10 text-slate-700 dark:text-slate-200 transition duration-300 hover:border-slate-800 hover:bg-slate-800 hover:text-white dark:hover:bg-white dark:hover:text-[var(--accent-green)]">
                   {social.icon}
                 </Link>
               ))}

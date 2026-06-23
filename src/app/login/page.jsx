@@ -87,7 +87,7 @@ export default function LoginPage() {
           {/* Left Side Branding - Desktop Banner */}
           <div className="relative hidden min-h-155 overflow-hidden bg-[#006B4F] p-10 text-white dark:bg-[#0b1b3a] lg:flex lg:flex-col lg:justify-between">
             <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-            <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-[#00D19A]/20 blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-[#006B4F]/20 blur-3xl" />
 
             <div className="relative z-10">
               <Link href="/" className="flex w-fit items-center gap-3">
@@ -157,7 +157,7 @@ export default function LoginPage() {
               </div>
 
               <div className="mb-6 text-center lg:text-left">
-                <span className="inline-flex rounded-full border border-[#006B4F]/15 bg-[#006B4F]/5 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-[#006B4F] dark:border-[#F6F0E4]/10 dark:bg-[#F6F0E4]/5 dark:text-[#00D19A]">
+                <span className="inline-flex rounded-full border border-[#006B4F]/15 bg-[#006B4F]/5 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-[#006B4F] dark:border-[#F6F0E4]/10 dark:bg-[#F6F0E4]/5 dark:text-[#006B4F]">
                   Login
                 </span>
 
@@ -190,7 +190,7 @@ export default function LoginPage() {
                     className={`w-full rounded-2xl border bg-white/65 px-5 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition placeholder:text-[#5f5a50]/50 focus:bg-white/90 focus:ring-4 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:placeholder:text-[#F6F0E4]/40 ${
                       errors.email
                         ? "border-red-500/60 focus:border-red-500 focus:ring-red-500/10 dark:border-red-500/50"
-                        : "border-[#006B4F]/20 focus:border-[#006B4F] focus:ring-[#006B4F]/10 dark:border-[#F6F0E4]/15 dark:focus:border-[#00D19A] dark:focus:ring-[#00D19A]/10"
+                        : "border-[#006B4F]/20 focus:border-[#006B4F] focus:ring-[#006B4F]/10 dark:border-[#F6F0E4]/15 dark:focus:border-[#006B4F] dark:focus:ring-[#006B4F]/10"
                     }`}
                   />
                   {errors.email && (
@@ -210,7 +210,7 @@ export default function LoginPage() {
 
                     <Link
                       href="/forgot-password"
-                      className="text-xs font-extrabold text-[#006B4F] transition hover:text-black hover:underline dark:text-[#00D19A] dark:hover:text-[#F6F0E4]">
+                      className="text-xs font-extrabold text-[#006B4F] transition hover:text-black hover:underline dark:text-[#006B4F] dark:hover:text-[#F6F0E4]">
                       Forgot password?
                     </Link>
                   </div>
@@ -227,13 +227,13 @@ export default function LoginPage() {
                       className={`w-full rounded-2xl border bg-white/65 pl-5 pr-12 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition placeholder:text-[#5f5a50]/50 focus:bg-white/90 focus:ring-4 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:placeholder:text-[#F6F0E4]/40 ${
                         errors.password
                           ? "border-red-500/60 focus:border-red-500 focus:ring-red-500/10 dark:border-red-500/50"
-                          : "border-[#006B4F]/20 focus:border-[#006B4F] focus:ring-[#006B4F]/10 dark:border-[#F6F0E4]/15 dark:focus:border-[#00D19A] dark:focus:ring-[#00D19A]/10"
+                          : "border-[#006B4F]/20 focus:border-[#006B4F] focus:ring-[#006B4F]/10 dark:border-[#F6F0E4]/15 dark:focus:border-[#006B4F] dark:focus:ring-[#006B4F]/10"
                       }`}
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5f5a50] hover:text-[#006B4F] dark:text-[#F6F0E4]/60 dark:hover:text-[#00D19A] transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5f5a50] hover:text-[#006B4F] dark:text-[#F6F0E4]/60 dark:hover:text-[#006B4F] transition-colors"
                       aria-label={
                         showPassword ? "Hide password" : "Show password"
                       }>
@@ -293,7 +293,7 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={loading || googleLoading}
-                  className="group relative w-full overflow-hidden rounded-2xl bg-[#006B4F] px-5 py-3.5 text-sm font-black text-white shadow-lg shadow-[#006B4F]/20 transition duration-300 disabled:pointer-events-none disabled:opacity-60 hover:-translate-y-0.5 hover:bg-[#004f3b] hover:shadow-xl hover:shadow-[#006B4F]/25 dark:bg-[#00D19A] dark:text-[#07111f] dark:hover:bg-[#F6F0E4]">
+                  className="group relative w-full overflow-hidden rounded-2xl bg-[#006B4F] px-5 py-3.5 text-sm font-black text-white shadow-lg shadow-[#006B4F]/20 transition duration-300 disabled:pointer-events-none disabled:opacity-60 hover:-translate-y-0.5 hover:bg-[#004f3b] hover:shadow-xl hover:shadow-[#006B4F]/25 dark:bg-[#006B4F] dark:text-[#07111f] dark:hover:bg-[#F6F0E4]">
                   <span className="relative z-10">
                     {loading ? "Logging in..." : "Login"}
                   </span>
@@ -325,7 +325,7 @@ export default function LoginPage() {
                 Don&apos;t have an account?{" "}
                 <Link
                   href="/register"
-                  className="font-black text-[#006B4F] transition hover:text-black hover:underline dark:text-[#00D19A] dark:hover:text-[#F6F0E4]">
+                  className="font-black text-[#006B4F] transition hover:text-black hover:underline dark:text-[#006B4F] dark:hover:text-[#F6F0E4]">
                   Create account
                 </Link>
               </p>

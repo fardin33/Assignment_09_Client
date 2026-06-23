@@ -58,13 +58,15 @@ const BookingProcess = () => {
     <section className=" py-10 md:py-15 lg:py-25">
       <div className="w-[84.615%] mx-auto">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="inline-flex rounded-full border border-[#006B4F]/25 bg-[#006B4F]/10 px-4 py-2 text-xs font-bold text-[#006B4F] dark:border-[#F6F0E4]/25 dark:bg-[#F6F0E4]/10 dark:text-[#F6F0E4]">
+          <span className="inline-flex rounded-full border border-[#006B4F]/25 bg-[#006B4F]/10 px-4 py-2 text-xs font-bold text-(--accent-green) dark:border-[#F6F0E4]/25 dark:bg-[#F6F0E4]/10 dark:text-[#F6F0E4]">
             Simple Process
           </span>
 
           <h2 className="mt-3.5 text-3xl md:text-5xl font-extrabold text-[#1f1b14] dark:text-[#F6F0E4]">
             Smart Booking{" "}
-            <span className="text-[#006B4F] dark:text-[#7bc47f]">Process</span>
+            <span className="text-(--accent-green) dark:text-[#0e9b75]">
+              Process
+            </span>
           </h2>
 
           <p className="mt-4 text-[#5f5a50] dark:text-[#F6F0E4]/75">
@@ -80,10 +82,12 @@ const BookingProcess = () => {
               )}
 
               <div className="group relative h-full rounded-3xl border border-[#006B4F]/15 p-8 text-center shadow-sm backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[#006B4F]/40 hover:shadow-xl dark:bg-[#0f234f]/50 dark:border-[#F6F0E4]/15">
-                <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#006B4F]/10 text-[#006B4F] transition duration-300 group-hover:bg-[#006B4F] group-hover:text-white dark:bg-[#F6F0E4]/10 dark:text-[#F6F0E4]">
+                <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#006B4F]/10 text-(--accent-green) transition duration-300 group-hover:bg-[#006B4F] group-hover:text-white dark:bg-[#F6F0E4]/10 dark:text-[#F6F0E4]">
                   {step.icon}
 
-                  <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-[#006B4F] text-xs font-extrabold text-white dark:bg-[#F6F0E4] dark:text-[#1e3a8a]">
+                  <span
+                    className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full text-xs font-extrabold text-white dark:bg-[#F6F0E4] dark:text-white"
+                    style={{ backgroundColor: "var(--accent-green)" }}>
                     {step.id}
                   </span>
                 </div>

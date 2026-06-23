@@ -90,7 +90,7 @@ const DetailsPage = () => {
                 </h1>
 
                 <div className="mt-4 flex flex-wrap items-center gap-3 text-sm font-semibold text-white/75">
-                  <span className="text-[#00D19A]">●</span>
+                  <span className="text-[#006B4F]">●</span>
                   <span>Listed by {room.listedBy}</span>
                   <span className="hidden sm:inline">•</span>
                   <span>⭐ {room.rating} rating</span>
@@ -115,7 +115,7 @@ const DetailsPage = () => {
                 <p className="text-[11px] font-extrabold uppercase tracking-wide text-white/65">
                   Booking Count
                 </p>
-                <p className="mt-2 text-2xl font-black text-[#00D19A]">
+                <p className="mt-2 text-2xl font-black text-[#006B4F]">
                   {room.bookings}
                 </p>
               </div>
@@ -198,7 +198,7 @@ const DetailsPage = () => {
                   key={rule}
                   className="flex gap-3 rounded-2xl bg-[#f8fafc] p-4 text-sm font-semibold leading-6 text-[#465672] dark:bg-[#07111f]/45 dark:text-[#F6F0E4]/75"
                 >
-                  <span className="text-[#006B4F] dark:text-[#00D19A]">
+                  <span className="text-[#006B4F] dark:text-[#006B4F]">
                     ✓
                   </span>
                   <span>{rule}</span>
@@ -216,7 +216,7 @@ const DetailsPage = () => {
                 Hourly Pricing
               </p>
 
-              <p className="mt-2 text-4xl font-black text-[#006B4F] dark:text-[#00D19A]">
+              <p className="mt-2 text-4xl font-black text-[#006B4F] dark:text-[#006B4F]">
                 ${room.price}
                 <span className="text-base font-extrabold text-[#465672] dark:text-[#F6F0E4]/70">
                   /hr

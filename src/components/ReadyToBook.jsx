@@ -11,7 +11,7 @@ const ReadyToBook = () => {
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-extrabold text-[#1f1b14] dark:text-[#F6F0E4]">
               Ready to Book Your{" "}
-              <span className="text-[#006B4F] dark:text-[#9ee6c9]">
+              <span className="text-(--accent-green) dark:text-[#0e9b75]">
                 Focus Space?
               </span>
             </h2>
@@ -24,13 +24,15 @@ const ReadyToBook = () => {
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/rooms"
-                className="w-full sm:w-auto rounded-full bg-[#006B4F] px-8 py-3.5 text-sm font-bold text-white transition duration-300 hover:bg-black">
+                className="w-full sm:w-auto rounded-full px-8 py-3.5 text-sm font-bold text-white transition duration-300 hover:bg-black"
+                style={{ backgroundColor: "var(--accent-green)" }}>
                 Browse Rooms Now →
               </Link>
 
               <Link
                 href="/register"
-                className="w-full sm:w-auto rounded-full border border-[#006B4F] px-8 py-3.5 text-sm font-bold text-[#006B4F] transition duration-300 hover:bg-[#006B4F] hover:text-white dark:border-[#F6F0E4]/40 dark:text-[#F6F0E4]">
+                className="w-full sm:w-auto rounded-full px-8 py-3.5 text-sm font-bold text-(--accent-green) transition duration-300 border-2 hover:bg-[#006B4F] hover:text-white dark:border-[#F6F0E4]/40 dark:text-[#F6F0E4]"
+                style={{ borderColor: "var(--accent-green)" }}>
                 Create Free Account
               </Link>
             </div>

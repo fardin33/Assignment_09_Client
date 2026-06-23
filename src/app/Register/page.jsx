@@ -95,7 +95,7 @@ export default function RegisterPage() {
 
   const renderRequirement = (text, isDone) => (
     <li
-      className={`flex items-center gap-2 text-xs font-semibold transition-colors duration-300 ${isDone ? "text-[#006B4F] dark:text-[#00D19A]" : "text-[#5f5a50]/60 dark:text-[#F6F0E4]/40"}`}>
+      className={`flex items-center gap-2 text-xs font-semibold transition-colors duration-300 ${isDone ? "text-(--accent-green) dark:text-(--accent-green)" : "text-[#5f5a50]/60 dark:text-[#F6F0E4]/40"}`}>
       <span>{isDone ? "✓" : "•"}</span>
       <span>{text}</span>
     </li>
@@ -112,7 +112,9 @@ export default function RegisterPage() {
                 <Link
                   href="/"
                   className="mx-auto mb-5 flex w-fit items-center gap-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#006B4F] text-2xl shadow-lg dark:bg-[#F6F0E4]">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-2xl text-2xl shadow-lg dark:bg-[#F6F0E4]"
+                    style={{ backgroundColor: "var(--accent-green)" }}>
                     📖
                   </div>
                   <span className="font-serif text-3xl font-semibold text-[#1f1b14] dark:text-[#F6F0E4]">
@@ -122,7 +124,7 @@ export default function RegisterPage() {
               </div>
 
               <div className="mb-6 text-center lg:text-left">
-                <span className="inline-flex rounded-full border border-[#006B4F]/15 bg-[#006B4F]/5 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-[#006B4F] dark:border-[#F6F0E4]/10 dark:bg-[#F6F0E4]/5 dark:text-[#00D19A]">
+                <span className="inline-flex rounded-full border border-[#006B4F]/15 bg-[#006B4F]/5 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-[#006B4F] dark:border-[#F6F0E4]/10 dark:bg-[#F6F0E4]/5 dark:text-[#006B4F]">
                   Create Account
                 </span>
                 <h1 className="mt-4 text-3xl font-black tracking-tight text-[#1f1b14] dark:text-[#F6F0E4] sm:text-4xl">
@@ -151,7 +153,7 @@ export default function RegisterPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter your full name"
-                    className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 px-5 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-[#006B4F] focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-[#00D19A]"
+                    className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 px-5 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-(--accent-green) focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-(--accent-green)"
                   />
                 </div>
 
@@ -169,7 +171,7 @@ export default function RegisterPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 px-5 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-[#006B4F] focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-[#00D19A]"
+                    className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 px-5 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-(--accent-green) focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-(--accent-green)"
                   />
                 </div>
 
@@ -193,8 +195,8 @@ export default function RegisterPage() {
                         }}
                         className={`rounded-lg px-3 py-1 text-xs font-bold transition-all duration-300 ${
                           imageType === "url"
-                            ? "bg-[#006B4F] text-white shadow-md dark:bg-[#00D19A] dark:text-[#07111f]"
-                            : "text-[#5f5a50]/70 hover:text-[#1f1b14] dark:text-[#F6F0E4]/50 dark:hover:text-[#F6F0E4]"
+                            ? "bg-(--accent-green) text-white shadow-md dark:bg-(--accent-green) dark:text-[#07111f]"
+                            : "text-white hover:text-[#1f1b14] dark:text-[#F6F0E4]/50 dark:hover:text-[#F6F0E4]"
                         }`}>
                         URL
                       </button>
@@ -206,7 +208,7 @@ export default function RegisterPage() {
                         }}
                         className={`rounded-lg px-3 py-1 text-xs font-bold transition-all duration-300 ${
                           imageType === "file"
-                            ? "bg-[#006B4F] text-white shadow-md dark:bg-[#00D19A] dark:text-[#07111f]"
+                            ? "bg-(--accent-green) text-white shadow-md dark:bg-(--accent-green) dark:text-[#07111f]"
                             : "text-[#5f5a50]/70 hover:text-[#1f1b14] dark:text-[#F6F0E4]/50 dark:hover:text-[#F6F0E4]"
                         }`}>
                         File
@@ -220,14 +222,14 @@ export default function RegisterPage() {
                       value={imageUrl}
                       onChange={(e) => setImageUrl(e.target.value)}
                       placeholder="Paste image link (e.g., https://example.com/pic.jpg)"
-                      className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 px-5 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-[#006B4F] focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-[#00D19A]"
+                      className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 px-5 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-(--accent-green) focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-(--accent-green)"
                     />
                   ) : (
                     <div className="relative flex items-center justify-between rounded-2xl border border-[#006B4F]/20 bg-white/65 px-5 py-3.5 text-sm font-semibold text-[#1f1b14] backdrop-blur-md dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4]">
                       <span className="truncate text-gray-400 max-w-50">
                         {fileName || "No file selected"}
                       </span>
-                      <label className="cursor-pointer rounded-xl bg-[#006B4F]/10 px-4 py-1.5 text-xs font-bold text-[#006B4F] transition hover:bg-[#006B4F]/20 dark:bg-[#00D19A]/10 dark:text-[#00D19A] dark:hover:bg-[#00D19A]/20">
+                      <label className="cursor-pointer rounded-xl bg-[#006B4F]/10 px-4 py-1.5 text-xs font-bold text-[#006B4F] transition hover:bg-[#006B4F]/20 dark:bg-[#006B4F]/10 dark:text-[#006B4F] dark:hover:bg-[#006B4F]/20">
                         Choose File
                         <input
                           type="file"
@@ -255,12 +257,12 @@ export default function RegisterPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Create a strong password"
-                      className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 pl-5 pr-12 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-[#006B4F] focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-[#00D19A]"
+                      className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 pl-5 pr-12 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-(--accent-green) focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-(--accent-green)"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5f5a50] hover:text-[#006B4F] dark:text-[#F6F0E4]/60 dark:hover:text-[#00D19A] transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5f5a50] hover:text-[#006B4F] dark:text-[#F6F0E4]/60 dark:hover:text-[#006B4F] transition-colors"
                       aria-label={
                         showPassword ? "Hide password" : "Show password"
                       }>
@@ -317,14 +319,14 @@ export default function RegisterPage() {
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Re-enter your password"
-                      className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 pl-5 pr-12 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-[#006B4F] focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-[#00D19A]"
+                      className="w-full rounded-2xl border border-[#006B4F]/20 bg-white/65 pl-5 pr-12 py-3.5 text-sm font-semibold text-[#1f1b14] outline-none backdrop-blur-md transition focus:border-[#006B4F] focus:bg-white/90 dark:border-[#F6F0E4]/15 dark:bg-[#07111f]/45 dark:text-[#F6F0E4] dark:focus:border-[#006B4F]"
                     />
                     <button
                       type="button"
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5f5a50] hover:text-[#006B4F] dark:text-[#F6F0E4]/60 dark:hover:text-[#00D19A] transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5f5a50] hover:text-[#006B4F] dark:text-[#F6F0E4]/60 dark:hover:text-[#006B4F] transition-colors"
                       aria-label={
                         showConfirmPassword
                           ? "Hide confirm password"
@@ -379,7 +381,7 @@ export default function RegisterPage() {
                     {renderRequirement("One number (0-9)", hasNumber)}
                     {renderRequirement("Special character", hasSpecialChar)}
                     <li
-                      className={`col-span-2 mt-0.5 pt-1.5 border-t border-[#006B4F]/5 dark:border-[#F6F0E4]/5 flex items-center gap-2 text-xs font-semibold transition-colors duration-300 ${isMatched ? "text-[#006B4F] dark:text-[#00D19A]" : "text-[#5f5a50]/60 dark:text-[#F6F0E4]/40"}`}>
+                      className={`col-span-2 mt-0.5 pt-1.5 border-t border-[#006B4F]/5 dark:border-[#F6F0E4]/5 flex items-center gap-2 text-xs font-semibold transition-colors duration-300 ${isMatched ? "text-[#006B4F] dark:text-[#006B4F]" : "text-[#5f5a50]/60 dark:text-[#F6F0E4]/40"}`}>
                       <span>{isMatched ? "✓" : "•"}</span>
                       <span>Passwords match</span>
                     </li>
@@ -389,7 +391,7 @@ export default function RegisterPage() {
                 <button
                   type="submit"
                   disabled={loading || googleLoading || !isFormValid}
-                  className="group relative w-full overflow-hidden rounded-2xl bg-[#006B4F] px-5 py-4 text-sm font-black text-white shadow-lg shadow-[#006B4F]/10 transition duration-300 disabled:pointer-events-none disabled:opacity-50 hover:-translate-y-0.5 hover:bg-[#004f3b] dark:bg-[#00D19A] dark:text-[#07111f] dark:hover:bg-[#F6F0E4]">
+                  className="group relative w-full overflow-hidden rounded-2xl bg-[#006B4F] px-5 py-4 text-sm font-black text-white shadow-lg shadow-[#006B4F]/10 transition duration-300 disabled:pointer-events-none disabled:opacity-50 hover:-translate-y-0.5 hover:bg-[#004f3b] dark:bg-[#006B4F] dark:text-[#07111f] dark:hover:bg-[#F6F0E4]">
                   <span className="relative z-10">
                     {loading ? "Creating Account..." : "Create Account"}
                   </span>
@@ -420,7 +422,7 @@ export default function RegisterPage() {
                 Already have an account?{" "}
                 <Link
                   href="/login"
-                  className="font-black text-[#006B4F] transition hover:text-black hover:underline dark:text-[#00D19A] dark:hover:text-[#F6F0E4]">
+                  className="font-black text-[#006B4F] transition hover:text-black hover:underline dark:text-[#006B4F] dark:hover:text-[#F6F0E4]">
                   Login
                 </Link>
               </p>
@@ -430,7 +432,7 @@ export default function RegisterPage() {
           {/* Right Banner Side */}
           <div className="relative hidden min-h-160 overflow-hidden bg-[#006B4F] p-10 text-white dark:bg-[#0b1b3a] lg:flex lg:flex-col lg:justify-between">
             <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-            <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-[#00D19A]/20 blur-3xl" />
+            <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-[#006B4F]/20 blur-3xl" />
 
             <div className="relative z-10">
               <Link href="/" className="flex w-fit items-center gap-3">

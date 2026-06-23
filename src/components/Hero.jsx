@@ -15,13 +15,15 @@ const Hero = () => {
       <div className="w-11/13 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left Content */}
         <div className="text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#006B4F]/30 bg-[#006B4F]/10 px-4 py-2 text-sm font-semibold text-[#006B4F] dark:text-[#F6F0E4]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#006B4F]/30 bg-[#006B4F]/10 px-4 py-2 text-sm font-semibold text-[#006B4F] dark:text-[#14a880]">
             ✦ Campus-Wide Study Room Network
           </div>
 
           <h1 className="mt-6 text-4xl md:text-5xl xl:text-[52px] font-extrabold leading-tight text-[#1f1b14] dark:text-[#F6F0E4]">
             Find Your{" "}
-            <span className="text-[#006B4F] dark:text-[#9ee6c9]">Perfect</span>{" "}
+            <span className="text-(--accent-green) dark:text-[#0e9b75]">
+              Perfect
+            </span>{" "}
             Study Room
           </h1>
 
@@ -34,20 +36,22 @@ const Hero = () => {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Link
               href="/rooms"
-              className="rounded-full bg-[#006B4F] px-7 py-3 text-sm font-bold text-white transition duration-300 hover:bg-black">
+              className="rounded-full px-7 py-3 text-sm font-bold text-white transition duration-300 hover:bg-black"
+              style={{ backgroundColor: "var(--accent-green)" }}>
               Explore Rooms →
             </Link>
 
             <Link
               href="/add-room"
-              className="rounded-full border border-[#006B4F] px-7 py-3 text-sm font-bold text-[#006B4F] transition duration-300 hover:bg-[#006B4F] hover:text-white dark:text-[#F6F0E4] dark:border-[#F6F0E4]">
+              className="rounded-full border px-7 py-3 text-sm font-bold text-(--accent-green) transition duration-300 hover:bg-[#006B4F] hover:text-white dark:text-[#F6F0E4] dark:border-[#F6F0E4]"
+              style={{ borderColor: "var(--accent-green)" }}>
               List Your Room
             </Link>
           </div>
 
           <div className="mt-10 grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0">
             <div>
-              <h3 className="text-2xl font-extrabold text-[#006B4F] dark:text-[#9ee6c9]">
+              <h3 className="text-2xl font-extrabold text-(--accent-green) dark:text-[#0e9b75]">
                 500+
               </h3>
               <p className="text-sm text-[#5f5a50] dark:text-[#F6F0E4]/70">
@@ -56,7 +60,7 @@ const Hero = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-extrabold text-[#006B4F] dark:text-[#9ee6c9]">
+              <h3 className="text-2xl font-extrabold text-(--accent-green) dark:text-[#0e9b75]">
                 12K+
               </h3>
               <p className="text-sm text-[#5f5a50] dark:text-[#F6F0E4]/70">
@@ -65,7 +69,7 @@ const Hero = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-extrabold text-[#006B4F] dark:text-[#9ee6c9]">
+              <h3 className="text-2xl font-extrabold text-(--accent-green) dark:text-[#0e9b75]">
                 4.8★
               </h3>
               <p className="text-sm text-[#5f5a50] dark:text-[#F6F0E4]/70">

@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import Cards from "@/components/ui/cards";
-import { rooms } from "@/data/roomsData";
+import { useMemo, useState, useEffect } from "react";
+import { rooms as fetchRooms } from "@/data/roomsData";
+import AllRoomsCards from "@/components/ui/allRoomsCard";
 
 const floorOptions = [
   "Ground Floor",
@@ -27,24 +27,34 @@ const amenityOptions = [
 ];
 
 const RoomsPage = () => {
+  const [dbRooms, setDbRooms] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const [searchText, setSearchText] = useState("");
   const [selectedFloor, setSelectedFloor] = useState("");
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [maxPrice, setMaxPrice] = useState(30);
   const [isFloorOpen, setIsFloorOpen] = useState(false);
 
+  useEffect(() => {
+    const loadRooms = async () => {
+      try {
+        const data = await fetchRooms(); // roomsData fetch
+        setDbRooms(data || []);
+      } catch (error) {
+        console.error("Failed to load rooms:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadRooms();
+  }, []);
+
   const filteredRooms = useMemo(() => {
     const searchValue = searchText.trim().toLowerCase();
 
-    return rooms.filter((room) => {
-      const searchableText = [
-        room.title,
-        room.floor,
-        room.desc,
-        room.listedBy,
-        room.accessLevel,
-        ...room.tags,
-      ]
+    return dbRooms.filter((room) => {
+      const searchableText = [room.roomName, room.floor, room.description]
         .filter(Boolean)
         .join(" ")
         .toLowerCase();
@@ -55,16 +65,18 @@ const RoomsPage = () => {
 
       const matchesFloor = selectedFloor ? room.floor === selectedFloor : true;
 
-      const matchesPrice = room.price <= maxPrice;
+      const matchesPrice = room.hourlyRate <= maxPrice;
 
       const matchesAmenities =
         selectedAmenities.length > 0
-          ? selectedAmenities.every((amenity) => room.tags.includes(amenity))
+          ? selectedAmenities.every((amenity) =>
+              room.amenities?.includes(amenity),
+            )
           : true;
 
       return matchesSearch && matchesFloor && matchesPrice && matchesAmenities;
     });
-  }, [searchText, selectedFloor, selectedAmenities, maxPrice]);
+  }, [dbRooms, searchText, selectedFloor, selectedAmenities, maxPrice]);
 
   const handleResetFilters = () => {
     setSearchText("");
@@ -84,7 +96,6 @@ const RoomsPage = () => {
       if (prev.includes(amenity)) {
         return prev.filter((item) => item !== amenity);
       }
-
       return [...prev, amenity];
     });
   };
@@ -100,7 +111,10 @@ const RoomsPage = () => {
             </span>
 
             <h1 className="mt-3.5 text-3xl font-extrabold text-[#1f1b14] dark:text-[#F6F0E4] md:text-5xl">
-              <span className="text-[#006B4F]">Available</span> Study Rooms
+              <span className="text-[#006B4F] dark:text-[#0e9b75]">
+                Available
+              </span>{" "}
+              Study Rooms
             </h1>
 
             <p className="mt-4 text-sm leading-7 text-[#5f5a50] dark:text-[#F6F0E4]/75 sm:text-base">
@@ -109,7 +123,7 @@ const RoomsPage = () => {
             </p>
           </div>
 
-          {/* Filter + Cards Layout */}
+          {/* Filter And Cards Layout */}
           <div className="grid gap-5 lg:grid-cols-[240px_1fr] xl:grid-cols-[260px_1fr]">
             {/* Left Filter */}
             <aside className="h-fit rounded-2xl border border-[#006B4F]/15 bg-white/75 p-4 shadow-sm backdrop-blur-xl dark:border-[#F6F0E4]/10 dark:bg-[#0f234f]/70 lg:sticky lg:top-5">
@@ -117,7 +131,6 @@ const RoomsPage = () => {
                 <span className="text-base text-[#006B4F] dark:text-[#F6F0E4]">
                   ☷
                 </span>
-
                 <h2 className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#1f1b14] dark:text-[#F6F0E4]">
                   Filters
                 </h2>
@@ -130,12 +143,10 @@ const RoomsPage = () => {
                   className="mb-2 block text-xs font-semibold text-[#5f5a50] dark:text-[#F6F0E4]/70">
                   Search rooms
                 </label>
-
                 <div className="relative">
                   <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#006B4F] dark:text-[#F6F0E4]/80">
                     🔍
                   </span>
-
                   <input
                     id="roomSearch"
                     type="text"
@@ -155,12 +166,10 @@ const RoomsPage = () => {
                     className="text-xs font-semibold text-[#5f5a50] dark:text-[#F6F0E4]/70">
                     Max price
                   </label>
-
                   <span className="rounded-full bg-[#006B4F]/10 px-2.5 py-0.5 text-[11px] font-bold text-[#006B4F] dark:bg-[#F6F0E4]/10 dark:text-[#F6F0E4]">
                     ${maxPrice}/hr
                   </span>
                 </div>
-
                 <input
                   id="maxPrice"
                   type="range"
@@ -177,14 +186,13 @@ const RoomsPage = () => {
                 <label className="mb-2.5 block text-xs font-bold text-[#5f5a50] dark:text-[#F6F0E4]/70">
                   Floor
                 </label>
-
                 <button
                   type="button"
                   onClick={() => setIsFloorOpen((prev) => !prev)}
                   className={
                     "flex w-full items-center justify-between gap-3 rounded-2xl border bg-white/85 px-4 py-3 text-left text-xs font-bold shadow-sm outline-none backdrop-blur-md transition duration-300 dark:bg-[#07111f]/50 " +
                     (isFloorOpen
-                      ? "border-[#006B4F] ring-4 ring-[#006B4F]/10 dark:border-[#00D19A] dark:ring-[#00D19A]/10"
+                      ? "border-[#006B4F] ring-4 ring-[#006B4F]/10 dark:border-[#006B4F] dark:ring-[#006B4F]/10"
                       : "border-[#006B4F]/20 hover:border-[#006B4F]/40 dark:border-[#F6F0E4]/15 dark:hover:border-[#F6F0E4]/30")
                   }
                   aria-haspopup="listbox"
@@ -198,7 +206,6 @@ const RoomsPage = () => {
                     }>
                     {selectedFloor || "All floors"}
                   </span>
-
                   <span
                     className={
                       "grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#006B4F]/10 text-sm text-[#006B4F] transition duration-300 dark:bg-[#F6F0E4]/10 dark:text-[#F6F0E4] " +
@@ -219,7 +226,7 @@ const RoomsPage = () => {
                         className={
                           "flex w-full items-center justify-between rounded-xl px-3.5 py-3 text-left text-xs font-bold transition " +
                           (selectedFloor === ""
-                            ? "bg-[#006B4F] text-white dark:bg-[#00D19A] dark:text-[#07111f]"
+                            ? "bg-[#006B4F] text-white dark:bg-[#006B4F] dark:text-[#07111f]"
                             : "text-[#1f1b14] hover:bg-[#eef8f5] dark:text-[#F6F0E4] dark:hover:bg-white/10")
                         }
                         role="option"
@@ -232,7 +239,6 @@ const RoomsPage = () => {
 
                       {floorOptions.map((floor) => {
                         const isSelected = selectedFloor === floor;
-
                         return (
                           <button
                             key={floor}
@@ -241,7 +247,7 @@ const RoomsPage = () => {
                             className={
                               "mt-1 flex w-full items-center justify-between rounded-xl px-3.5 py-3 text-left text-xs font-bold transition " +
                               (isSelected
-                                ? "bg-[#006B4F] text-white dark:bg-[#00D19A] dark:text-[#07111f]"
+                                ? "bg-[#006B4F] text-white dark:bg-[#006B4F] dark:text-[#07111f]"
                                 : "text-[#1f1b14] hover:bg-[#eef8f5] dark:text-[#F6F0E4] dark:hover:bg-white/10")
                             }
                             role="option"
@@ -261,7 +267,6 @@ const RoomsPage = () => {
                 <h3 className="mb-2.5 text-xs font-bold text-[#5f5a50] dark:text-[#F6F0E4]/70">
                   Amenities
                 </h3>
-
                 <div className="grid gap-2">
                   {amenityOptions.map((amenity) => (
                     <label
@@ -288,17 +293,20 @@ const RoomsPage = () => {
               </button>
             </aside>
 
-            {/* Right Side: Only Room Cards */}
+            {/* Right Side:  */}
             <div className="min-w-0 overflow-hidden rounded-3xl border border-[#006B4F]/10 bg-white/50 p-4 dark:border-[#F6F0E4]/10 dark:bg-[#0b1733]/40 sm:p-5">
-              {filteredRooms.length > 0 ? (
-                <Cards rooms={filteredRooms} />
+              {loading ? (
+                <div className="flex min-h-60 items-center justify-center text-sm font-semibold dark:text-white">
+                  Loading rooms...
+                </div>
+              ) : filteredRooms.length > 0 ? (
+                <AllRoomsCards roomsData={filteredRooms} />
               ) : (
                 <div className="flex min-h-60 items-center justify-center rounded-2xl border border-dashed border-[#006B4F]/25 bg-white/40 p-6 text-center dark:border-[#F6F0E4]/20 dark:bg-[#0f234f]/40">
                   <div>
                     <h3 className="text-lg font-extrabold text-[#1f1b14] dark:text-[#F6F0E4]">
                       No rooms found
                     </h3>
-
                     <p className="mt-2 text-sm text-[#5f5a50] dark:text-[#F6F0E4]/70">
                       Try searching with another room name, floor, or amenity.
                     </p>

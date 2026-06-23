@@ -107,7 +107,7 @@ const Navbar = ({ handleLogout }) => {
       setMobileOpen(false);
       handleLogout?.();
     } catch (error) {
-      console.error("লগআউট করতে সমস্যা হয়েছে:", error);
+      console.error("Logout Issue : ", error);
     }
   };
 
@@ -117,15 +117,15 @@ const Navbar = ({ handleLogout }) => {
 
     return `text-base font-bold transition duration-200 ${
       isActive
-        ? "text-[#006B4F] dark:text-[#00D19A]"
-        : "text-[#4f4a40] hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:text-[#00D19A]"
+        ? "text-[var(--accent-green)] dark:text-[#0e9b75]"
+        : "text-[#4f4a40] hover:text-[var(--accent-green)] dark:text-[#F6F0E4] dark:hover:text-[#0e9b75]"
     }`;
   };
 
   const privateLinks = [
     { label: "Add Room", href: "/add-room" },
-    { label: "My Listing", href: "/my-listing" },
     { label: "My Bookings", href: "/my-bookings" },
+    { label: "My Listing", href: "/my-listing" },
   ];
 
   return (
@@ -165,7 +165,7 @@ const Navbar = ({ handleLogout }) => {
           <div className="relative hidden shrink-0 items-center gap-4 md:flex">
             <button
               onClick={handleThemeToggle}
-              className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-[#006B4F]/25 bg-white/20 text-[#006B4F] backdrop-blur-md transition hover:bg-white/40 dark:bg-[#07111f]/50 dark:text-[#F6F0E4]"
+              className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-[#0e9b75] bg-white/20 text-[#006B4F] backdrop-blur-md transition hover:bg-white/40 dark:bg-[#07111f]/50 dark:text-[#F6F0E4]"
               aria-label="Toggle theme"
               type="button">
               <span
@@ -182,13 +182,18 @@ const Navbar = ({ handleLogout }) => {
               <div className="flex items-center gap-4">
                 <Link
                   href="/login"
-                  className={`text-sm font-bold transition ${pathname === "/login" ? "text-[#006B4F] dark:text-[#00D19A]" : "text-[#4f4a40] hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:text-[#00D19A]"}`}>
+                  className={`text-sm font-bold transition ${pathname === "/login" ? "text-(--accent-green) dark:text-(--accent-green)" : "text-[#4f4a40] hover:text-(--accent-green) dark:text-[#F6F0E4] dark:hover:text-(--accent-green)"}`}>
                   Login
                 </Link>
 
                 <Link
                   href="/register"
-                  className={`rounded-full px-5 py-2 text-sm font-bold transition duration-300 ${pathname === "/register" ? "bg-black text-white dark:bg-[#00D19A] dark:text-[#10231b]" : "bg-[#006B4F] text-white hover:bg-[#004f3b]"}`}>
+                  className={`rounded-full px-5 py-2 text-sm font-bold transition duration-300 ${pathname === "/register" ? "bg-black text-white dark:bg-(--accent-green) dark:text-[#10231b]" : "text-white"}`}
+                  style={
+                    pathname === "/register"
+                      ? {}
+                      : { backgroundColor: "var(--accent-green)" }
+                  }>
                   Register
                 </Link>
               </div>
@@ -196,7 +201,7 @@ const Navbar = ({ handleLogout }) => {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setOpen((prev) => !prev)}
-                  className="flex items-center gap-3 rounded-full border border-[#006B4F]/40 bg-white/40 p-1.5 pr-4 text-left shadow-xs backdrop-blur-md transition hover:bg-white/60 dark:border-[#F6F0E4]/30 dark:bg-[#0f234f]/40 dark:hover:bg-[#0f234f]/60"
+                  className="flex items-center gap-3 rounded-full border border-[#0e9b75] bg-white/40 p-1.5 pr-4 text-left shadow-xs backdrop-blur-md transition hover:bg-white/60 dark:border-[#0e9b75] dark:bg-[#0f234f]/10 dark:hover:bg-[#0f234f]/60"
                   type="button">
                   <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full border border-[#006B4F]/10 dark:border-[#F6F0E4]/10">
                     <Image
@@ -233,7 +238,7 @@ const Navbar = ({ handleLogout }) => {
                     <Link
                       href="/profile"
                       onClick={() => setOpen(false)}
-                      className="block rounded-xl px-4 py-2.5 text-xs font-bold text-[#4f4a40] transition hover:bg-[#006B4F]/10 hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:bg-[#00D19A]/10 dark:hover:text-[#00D19A]">
+                      className="block rounded-xl px-4 py-2.5 text-xs font-bold text-[#4f4a40] transition hover:bg-[#006B4F]/10 hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:bg-[#006B4F]/10 dark:hover:text-[#006B4F]">
                       View Profile
                     </Link>
 
@@ -242,21 +247,21 @@ const Navbar = ({ handleLogout }) => {
                     <Link
                       href="/add-room"
                       onClick={() => setOpen(false)}
-                      className="block rounded-xl px-4 py-2.5 text-xs font-bold text-[#4f4a40] transition hover:bg-[#006B4F]/10 hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:bg-[#00D19A]/10 dark:hover:text-[#00D19A]">
+                      className="block rounded-xl px-4 py-2.5 text-xs font-bold text-[#4f4a40] transition hover:bg-[#006B4F]/10 hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:bg-[#006B4F]/10 dark:hover:text-[#006B4F]">
                       Add Room
                     </Link>
 
                     <Link
                       href="/my-listing"
                       onClick={() => setOpen(false)}
-                      className="block rounded-xl px-4 py-2.5 text-xs font-bold text-[#4f4a40] transition hover:bg-[#006B4F]/10 hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:bg-[#00D19A]/10 dark:hover:text-[#00D19A]">
+                      className="block rounded-xl px-4 py-2.5 text-xs font-bold text-[#4f4a40] transition hover:bg-[#006B4F]/10 hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:bg-[#006B4F]/10 dark:hover:text-[#006B4F]">
                       My Listings
                     </Link>
 
                     <Link
                       href="/my-bookings"
                       onClick={() => setOpen(false)}
-                      className="block rounded-xl px-4 py-2.5 text-xs font-bold text-[#4f4a40] transition hover:bg-[#006B4F]/10 hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:bg-[#00D19A]/10 dark:hover:text-[#00D19A]">
+                      className="block rounded-xl px-4 py-2.5 text-xs font-bold text-[#4f4a40] transition hover:bg-[#006B4F]/10 hover:text-[#006B4F] dark:text-[#F6F0E4] dark:hover:bg-[#006B4F]/10 dark:hover:text-[#006B4F]">
                       My Bookings
                     </Link>
 
@@ -357,13 +362,19 @@ const Navbar = ({ handleLogout }) => {
               <div className="flex w-full items-center gap-3 pt-2 border-t border-[#006B4F]/10 dark:border-[#F6F0E4]/10">
                 <Link
                   href="/login"
-                  className={`flex-1 rounded-full border border-[#006B4F]/25 py-2.5 text-center text-xs font-bold transition ${pathname === "/login" ? "bg-[#006B4F] text-white" : "text-[#006B4F] dark:text-[#F6F0E4]"}`}
+                  className={`flex-1 rounded-full border py-2.5 text-center text-xs font-bold transition ${pathname === "/login" ? "text-white" : "text-[var(--accent-green)] dark:text-[#F6F0E4]"}`}
+                  style={
+                    pathname === "/login"
+                      ? { backgroundColor: "var(--accent-green)" }
+                      : { borderColor: "var(--accent-green)" }
+                  }
                   onClick={closeMobileMenu}>
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="flex-1 rounded-full bg-[#006B4F] py-2.5 text-center text-xs font-bold text-white hover:bg-[#004f3b]"
+                  className="flex-1 rounded-full py-2.5 text-center text-xs font-bold text-white"
+                  style={{ backgroundColor: "var(--accent-green)" }}
                   onClick={closeMobileMenu}>
                   Register
                 </Link>

@@ -3,11 +3,11 @@
 
 :root {
   --page-bg-light: #ecf0f1;
-  --page-bg-dark: #34495e;
+  --page-bg-dark: #07111f;
   --text-light: #0f172a;
   --text-dark: #f8fafc;
   --accent-green: #006b4f;
-  --accent-green-strong: #004f3b;
+  --accent-green-strong: #007a55;
 }
 
 html {
@@ -31,8 +31,8 @@ body {
   color: var(--text-dark);
   background: linear-gradient(
     135deg,
-    var(--page-bg-dark) 0%,
-    var(--page-bg-dark) 94%,
+    rgba(7, 17, 31, 0.7) 0%,
+    rgba(7, 17, 31, 0.7) 94%,
     rgba(236, 240, 241, 0.08) 100%
   );
 }
