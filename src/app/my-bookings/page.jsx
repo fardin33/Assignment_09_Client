@@ -280,7 +280,7 @@ const MyBookingPage = () => {
   }, [activeTab]);
 
   return (
-    <main className="min-h-screen text-[#1f1f1f] dark:text-[#F6F0E4] transition-colors duration-300">
+    <main className="min-h-screen text-black dark:text-[#F6F0E4] transition-colors duration-300">
       <section className="mx-auto w-full max-w-7xl px-4 pt-8 pb-28 sm:px-6 sm:pb-32 md:pt-10 md:pb-40 lg:px-5">
         {/* Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center sm:mb-20 md:mb-24">
@@ -288,7 +288,7 @@ const MyBookingPage = () => {
             My Bookings
           </h1>
 
-          <p className="mt-3 text-sm text-[#55504a] dark:text-[#F6F0E4]/75 sm:text-base md:text-lg">
+          <p className="mt-3 text-sm text-slate-700 dark:text-[#F6F0E4]/75 sm:text-base md:text-lg">
             Manage upcoming and past sessions.
           </p>
         </div>
@@ -307,7 +307,7 @@ const MyBookingPage = () => {
                   className={`flex-1 cursor-pointer rounded-full px-4 py-2.5 text-sm font-bold transition sm:flex-none sm:px-5 ${
                     isActive
                       ? "bg-[#00775B] text-white shadow-[0_10px_25px_rgba(0,119,91,0.15)] dark:bg-[#0e9b75] dark:text-[#07111f] dark:shadow-none"
-                      : "bg-transparent text-[#55504a] dark:text-[#F6F0E4]/70 hover:bg-[#00775B]/10 hover:text-[#00775B] dark:hover:bg-white/5 dark:hover:text-[#0e9b75]"
+                      : "bg-transparent text-slate-700 dark:text-[#F6F0E4]/70 hover:bg-[#00775B]/10 hover:text-[#00775B] dark:hover:bg-white/5 dark:hover:text-[#0e9b75]"
                   }`}>
                   {tab.label}
                 </button>
@@ -341,7 +341,7 @@ const MyBookingPage = () => {
                     {/* Main Content */}
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                        <h2 className="text-xl font-extrabold text-[#1f1f1f] dark:text-[#F6F0E4]">
+                        <h2 className="text-xl font-extrabold !text-black dark:!text-[#F6F0E4]">
                           {booking.roomName}
                         </h2>
 
@@ -360,7 +360,7 @@ const MyBookingPage = () => {
                         </span>
                       </div>
 
-                      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-[#55504a] dark:text-[#F6F0E4]/70">
+                      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-slate-700 dark:text-[#F6F0E4]/70">
                         <span className="inline-flex items-center gap-2">
                           <CalendarDays className="h-4 w-4 text-[#00775B] dark:text-[#0e9b75]" />
                           {booking.date}
@@ -378,7 +378,7 @@ const MyBookingPage = () => {
                       </div>
 
                       {booking.note && (
-                        <div className="mt-4 rounded-2xl border border-[#00775B]/15 bg-[#00775B]/5 dark:border-[#F6F0E4]/10 dark:bg-[#07111f]/60 px-4 py-3 text-sm font-medium text-[#55504a] dark:text-[#F6F0E4]/80">
+                        <div className="mt-4 rounded-2xl border border-[#00775B]/15 bg-[#00775B]/5 dark:border-[#F6F0E4]/10 dark:bg-[#07111f]/60 px-4 py-3 text-sm font-medium text-slate-700 dark:text-[#F6F0E4]/80">
                           {booking.note}
                         </div>
                       )}
@@ -387,7 +387,7 @@ const MyBookingPage = () => {
                     {/* Price and Action */}
                     <div className="flex shrink-0 items-center justify-between gap-4 border-t border-[#00775B]/10 dark:border-[#F6F0E4]/10 pt-4 lg:w-28 lg:flex-col lg:items-end lg:border-t-0 lg:pt-0">
                       <div className="text-left lg:text-right">
-                        <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#55504a] dark:text-[#F6F0E4]/60">
+                        <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-slate-700 dark:text-[#F6F0E4]/60">
                           Total
                         </p>
 
@@ -413,11 +413,11 @@ const MyBookingPage = () => {
         ) : (
           <div className="flex min-h-57.5 items-center justify-center rounded-[24px] border border-[#00775B]/15 bg-white/55 dark:border-[#F6F0E4]/10 dark:bg-[#0b1733]/50 p-6 text-center shadow-[0_20px_55px_rgba(0,119,91,0.03)] dark:shadow-none backdrop-blur-xl sm:min-h-65">
             <div>
-              <p className="text-base font-bold text-[#55504a] dark:text-[#F6F0E4]/80 sm:text-lg">
+              <p className="text-base font-bold text-slate-700 dark:text-[#F6F0E4]/80 sm:text-lg">
                 No {activeTab === "all" ? "" : activeTab} bookings found.
               </p>
 
-              <p className="mt-2 text-sm text-[#55504a] dark:text-[#F6F0E4]/60">
+              <p className="mt-2 text-sm text-slate-700 dark:text-[#F6F0E4]/60">
                 Your booking data will appear here.
               </p>
             </div>

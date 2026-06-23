@@ -524,8 +524,8 @@ const Navbar = ({ handleLogout }) => {
 
   const privateLinks = [
     { label: "Add Room", href: "/add-room" },
-    { label: "My Bookings", href: "/my-bookings" },
     { label: "My Listing", href: "/my-listing" },
+    { label: "My Bookings", href: "/my-bookings" },
   ];
 
   return (
