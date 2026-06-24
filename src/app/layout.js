@@ -26,7 +26,7 @@ import Footer from "@/components/Footer";
 export const metadata = {
   title: "StudyNook",
   description: "Library study room booking platform",
-};
+}; 
 
 export default function RootLayout({ children }) {
   return (

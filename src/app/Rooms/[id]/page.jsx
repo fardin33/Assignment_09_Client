@@ -1,9 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { rooms } from "@/data/roomsData";
+import { getRoomDetails } from "@/data/roomsData";
 
 const InfoItem = ({ icon, label, value }) => {
   return (
@@ -24,11 +21,11 @@ const InfoItem = ({ icon, label, value }) => {
   );
 };
 
-const DetailsPage = () => {
-  const params = useParams();
-  const roomId = Number(params.id);
+const DetailsPage = async ({ params }) => {
+  const resolvedParams = await params;
+  const roomId = resolvedParams.id;
 
-  const room = rooms.find((item) => item.id === roomId);
+  const room = await getRoomDetails(roomId);
 
   if (!room) {
     return (
@@ -39,14 +36,13 @@ const DetailsPage = () => {
           </h1>
 
           <p className="mt-3 text-sm leading-6 text-[#5f6b85] dark:text-[#F6F0E4]/70">
-            The room you are looking for does not exist or may have been
-            removed.
+            The room you are looking for does not exist or may have been removed
+            from the database.
           </p>
 
           <Link
             href="/Rooms"
-            className="mt-6 inline-flex rounded-full bg-[#006B4F] px-6 py-3 text-sm font-bold text-white transition hover:bg-black"
-          >
+            className="mt-6 inline-flex rounded-full bg-[#006B4F] px-6 py-3 text-sm font-bold text-white transition hover:bg-black">
             Back to Rooms
           </Link>
         </div>
@@ -58,14 +54,16 @@ const DetailsPage = () => {
     <main className="min-h-screen bg-[#f5f7fb] dark:bg-[#07111f]">
       {/* Hero Section */}
       <section className="relative h-90 overflow-hidden sm:h-105 lg:h-113.75">
-        <Image
-          src={room.image}
-          alt={room.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        {room.image && (
+          <Image
+            src={room.image}
+            alt={room.roomName || "Study Room Image"}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        )}
 
         <div className="absolute inset-0 bg-linear-to-r from-[#07111f]/90 via-[#07111f]/60 to-[#07111f]/55" />
         <div className="absolute inset-0 bg-linear-to-t from-[#07111f]/95 via-transparent to-transparent" />
@@ -75,8 +73,7 @@ const DetailsPage = () => {
             <div>
               <Link
                 href="/Rooms"
-                className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold text-white/85 backdrop-blur-md transition hover:bg-white/20"
-              >
+                className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold text-white/85 backdrop-blur-md transition hover:bg-white/20">
                 ← Back to Rooms
               </Link>
 
@@ -86,16 +83,16 @@ const DetailsPage = () => {
                 </span>
 
                 <h1 className="mt-4 max-w-3xl text-3xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
-                  {room.title}
+                  {room.roomName}
                 </h1>
 
                 <div className="mt-4 flex flex-wrap items-center gap-3 text-sm font-semibold text-white/75">
                   <span className="text-[#006B4F]">●</span>
-                  <span>Listed by {room.listedBy}</span>
+                  <span>Listed by {room.listedBy || "Admin"}</span>
                   <span className="hidden sm:inline">•</span>
                   <span>⭐ {room.rating} rating</span>
                   <span className="hidden sm:inline">•</span>
-                  <span>{room.seats} seats</span>
+                  <span>{room.capacity} seats</span>
                 </div>
               </div>
             </div>
@@ -106,7 +103,7 @@ const DetailsPage = () => {
                   Hourly Rate
                 </p>
                 <p className="mt-2 text-2xl font-black text-[#F6F0E4]">
-                  ${room.price}
+                  ${room.hourlyRate}
                   <span className="text-base text-white/70">/hr</span>
                 </p>
               </div>
@@ -116,7 +113,7 @@ const DetailsPage = () => {
                   Booking Count
                 </p>
                 <p className="mt-2 text-2xl font-black text-[#006B4F]">
-                  {room.bookings}
+                  {room.bookings || 0}x
                 </p>
               </div>
             </div>
@@ -136,7 +133,7 @@ const DetailsPage = () => {
             <div className="mt-4 h-1 w-14 rounded-full bg-[#006B4F]" />
 
             <p className="mt-5 text-base leading-8 text-[#465672] dark:text-[#F6F0E4]/75">
-              {room.desc}
+              {room.description}
             </p>
 
             <div className="mt-7 border-t border-[#e8edf5] pt-6 dark:border-[#F6F0E4]/10">
@@ -144,42 +141,43 @@ const DetailsPage = () => {
                 <InfoItem
                   icon="👥"
                   label="Seat Capacity"
-                  value={`${room.seats} people`}
+                  value={`${room.capacity} Seats`}
                 />
 
                 <InfoItem
                   icon="🔐"
                   label="Access Level"
-                  value={room.accessLevel}
+                  value={room.accessLevel || "All Users"}
                 />
 
                 <InfoItem
                   icon="🕘"
                   label="Min Booking"
-                  value={room.minBooking}
+                  value={room.minBooking || "1 Hour"}
                 />
               </div>
             </div>
           </div>
 
           {/* Amenities */}
-          <div className="rounded-3xl border border-[#dfe5ef] bg-white p-6 shadow-sm dark:border-[#F6F0E4]/10 dark:bg-[#0f234f]/70 sm:p-8">
-            <h2 className="text-2xl font-black text-[#172033] dark:text-[#F6F0E4]">
-              Equipped Amenities
-            </h2>
+          {room.amenities && room.amenities.length > 0 && (
+            <div className="rounded-3xl border border-[#dfe5ef] bg-white p-6 shadow-sm dark:border-[#F6F0E4]/10 dark:bg-[#0f234f]/70 sm:p-8">
+              <h2 className="text-2xl font-black text-[#172033] dark:text-[#F6F0E4]">
+                Equipped Amenities
+              </h2>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {room.tags.map((tag) => (
-                <div
-                  key={tag}
-                  className="flex items-center gap-3 rounded-2xl border border-[#e8edf5] bg-[#f8fafc] px-4 py-4 text-sm font-bold text-[#26324a] dark:border-[#F6F0E4]/10 dark:bg-[#07111f]/45 dark:text-[#F6F0E4]"
-                >
-                  <span className="h-2 w-2 rounded-full bg-[#006B4F]" />
-                  {tag}
-                </div>
-              ))}
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {room.amenities.map((amenity) => (
+                  <div
+                    key={amenity}
+                    className="flex items-center gap-3 rounded-2xl border border-[#e8edf5] bg-[#f8fafc] px-4 py-4 text-sm font-bold text-[#26324a] dark:border-[#F6F0E4]/10 dark:bg-[#07111f]/45 dark:text-[#F6F0E4]">
+                    <span className="h-2 w-2 rounded-full bg-[#006B4F]" />
+                    {amenity}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Rules */}
           <div className="rounded-3xl border border-[#dfe5ef] bg-white p-6 shadow-sm dark:border-[#F6F0E4]/10 dark:bg-[#0f234f]/70 sm:p-8">
@@ -196,11 +194,8 @@ const DetailsPage = () => {
               ].map((rule) => (
                 <div
                   key={rule}
-                  className="flex gap-3 rounded-2xl bg-[#f8fafc] p-4 text-sm font-semibold leading-6 text-[#465672] dark:bg-[#07111f]/45 dark:text-[#F6F0E4]/75"
-                >
-                  <span className="text-[#006B4F] dark:text-[#006B4F]">
-                    ✓
-                  </span>
+                  className="flex gap-3 rounded-2xl bg-[#f8fafc] p-4 text-sm font-semibold leading-6 text-[#465672] dark:bg-[#07111f]/45 dark:text-[#F6F0E4]/75">
+                  <span className="text-[#006B4F] dark:text-[#006B4F]">✓</span>
                   <span>{rule}</span>
                 </div>
               ))}
@@ -217,7 +212,7 @@ const DetailsPage = () => {
               </p>
 
               <p className="mt-2 text-4xl font-black text-[#006B4F] dark:text-[#006B4F]">
-                ${room.price}
+                ${room.hourlyRate}
                 <span className="text-base font-extrabold text-[#465672] dark:text-[#F6F0E4]/70">
                   /hr
                 </span>
@@ -230,7 +225,7 @@ const DetailsPage = () => {
               </p>
 
               <p className="mt-3 text-2xl font-black text-[#172033] dark:text-[#F6F0E4]">
-                {room.bookings}
+                {room.bookings || 0}
               </p>
             </div>
           </div>
@@ -252,7 +247,7 @@ const DetailsPage = () => {
                 Seats
               </span>
               <span className="text-sm font-black text-[#172033] dark:text-[#F6F0E4]">
-                {room.seats} people
+                {room.capacity} people
               </span>
             </div>
 
@@ -269,16 +264,15 @@ const DetailsPage = () => {
               <span className="text-sm font-bold text-[#5f6b85] dark:text-[#F6F0E4]/70">
                 Access
               </span>
-              <span className="text-right text-sm font-black text-[#172033] dark:text-[#F6F0E4]"> 
-                {room.accessLevel}
+              <span className="text-right text-sm font-black text-[#172033] dark:text-[#F6F0E4]">
+                {room.accessLevel || "Public"}
               </span>
             </div>
           </div>
 
           <Link
             href="/login"
-            className="mt-6 flex w-full items-center justify-center rounded-2xl bg-[#006B4F] px-5 py-4 text-sm font-black text-white shadow-lg shadow-[#006B4F]/20 transition duration-300 hover:-translate-y-0.5 hover:bg-black hover:shadow-xl"
-          >
+            className="mt-6 flex w-full items-center justify-center rounded-2xl bg-[#006B4F] px-5 py-4 text-sm font-black text-white shadow-lg shadow-[#006B4F]/20 transition duration-300 hover:-translate-y-0.5 hover:bg-black hover:shadow-xl">
             Login to Book
           </Link>
 
