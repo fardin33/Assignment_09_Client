@@ -18,7 +18,7 @@ export default function RegisterPage() {
   const [imageUrl, setImageUrl] = useState("");
   const [fileName, setFileName] = useState("");
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); 
   const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState("");
 
